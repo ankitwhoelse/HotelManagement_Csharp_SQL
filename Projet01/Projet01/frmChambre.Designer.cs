@@ -173,9 +173,9 @@
             // 
             // noChambreTextBox
             // 
-            this.noChambreTextBox.Enabled = false;
             this.noChambreTextBox.Location = new System.Drawing.Point(114, 46);
             this.noChambreTextBox.Name = "noChambreTextBox";
+            this.noChambreTextBox.ReadOnly = true;
             this.noChambreTextBox.Size = new System.Drawing.Size(100, 20);
             this.noChambreTextBox.TabIndex = 0;
             // 

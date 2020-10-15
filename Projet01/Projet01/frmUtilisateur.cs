@@ -88,7 +88,8 @@ namespace Projet01
             {           // AJOUTER
                 SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
                 maConnexion.Open();
-                String maRequeteSQL = "insert into P01_Utilisateur(NoUtilisateur,Nomutilisateur,MotDepasse,NoType) values('" + noUtilisateurTextBox.ToString() + "','" + nomUtilisateurTextBox.ToString() + "','" + motDePasseUtilisateurTextBox.ToString() +"','"+ typeUtilisateurComboBox.SelectedItem.ToString() + "')";
+                String maRequeteSQL = "insert into P01_Utilisateur(NoUtilisateur,Nomutilisateur,MotDepasse,NoType) values('" + noUtilisateurTextBox.Text.ToString() + "','" 
+                    + nomUtilisateurTextBox.Text.ToString() + "','" + motDePasseUtilisateurTextBox.Text.ToString() +"','"+ typeUtilisateurComboBox.SelectedValue.ToString() + "')";
                 SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
                 maCommande.ExecuteScalar();
                 maConnexion.Close();

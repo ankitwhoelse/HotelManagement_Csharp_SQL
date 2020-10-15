@@ -142,6 +142,7 @@
             // 
             this.noInviteTextBox.Location = new System.Drawing.Point(107, 56);
             this.noInviteTextBox.Name = "noInviteTextBox";
+            this.noInviteTextBox.ReadOnly = true;
             this.noInviteTextBox.Size = new System.Drawing.Size(100, 20);
             this.noInviteTextBox.TabIndex = 27;
             // 
@@ -156,6 +157,7 @@
             // 
             this.nomClientTextBox.Location = new System.Drawing.Point(107, 112);
             this.nomClientTextBox.Name = "nomClientTextBox";
+            this.nomClientTextBox.ReadOnly = true;
             this.nomClientTextBox.Size = new System.Drawing.Size(100, 20);
             this.nomClientTextBox.TabIndex = 1;
             // 

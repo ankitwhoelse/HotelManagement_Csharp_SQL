@@ -24,6 +24,7 @@ namespace Projet01
 
         private int choixMenu;
         private bool booAjout;
+        // lol
 
         frmUtilisateur frmU = new frmUtilisateur();
         frmClient frmCl = new frmClient();
@@ -34,7 +35,6 @@ namespace Projet01
         frmChambre frmCh = new frmChambre();
         frmReservationChambre frmResCh = new frmReservationChambre();
         frmTypeChambre frmTyCh = new frmTypeChambre();
-
 
         String maChaineDeConnexion = "Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Ankit;Persist Security Info=True;User ID=B56Ankit;Password=Summit11g";
 
@@ -124,7 +124,7 @@ namespace Projet01
                     frmCh.booAjout = booAjout;
                     frmCh.ShowDialog();
                     break;
-                default:    MessageBox.Show("this aint right", "bug");
+                default:    MessageBox.Show("this aint right", "bug ajout");
                     break;
             }
             
@@ -173,10 +173,174 @@ namespace Projet01
                     frmCh.ShowDialog();
                     break;
                 default:
-                    MessageBox.Show("this aint right", "bug");
+                    MessageBox.Show("this aint right", "bug modif");
                     break;
             }
             this.Show();
+        }
+
+        /*
+        *  Supprimer l'objet  
+        */
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            switch (choixMenu)
+            {
+                case 1:
+                    dynamic NoUtilisateurDel = cboUtilisateurs.SelectedValue.ToString();
+                    if (NoUtilisateurDel == "1")
+                    {   // Dont delete admin pls
+                        MessageBox.Show("La suppression du compte admin est impossible.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    else if (NoUtilisateur == NoUtilisateurDel)
+                    {   // Dont self delete pls
+                        MessageBox.Show("La suppression de votre propre compte est impossible.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    else
+                    {   // Delete un autre util :)
+                        using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+                        {
+                            con.Open();
+                            string requete = "DELETE FROM P01_Utilisateur WHERE NoUtilisateur = " + NoUtilisateurDel;
+                            SqlCommand comm = new SqlCommand(requete, con);
+                            comm.ExecuteNonQuery();
+
+                            MessageBox.Show("L'utilisateur a été supprimé.", "Utilisateur supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.p01_UtilisateurBindingSource.EndEdit();
+                            this.p01_UtilisateurTableAdapter.Update(this.bDB56AnkitDataSet.P01_Utilisateur);
+                            con.Close();
+                        }
+                    }
+                        break;
+                case 2:
+                    NoClient = cboClients.SelectedValue.ToString();
+                    using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+                    {
+                        con.Open(); 
+                        string requete = "SELECT i.NoClient FROM P01_Invite i WHERE NoClient = " + NoClient +
+                            " UNION SELECT NoPersonne FROM P01_PlanifSoin WHERE NoPersonne = " + NoClient +
+                            " UNION SELECT NoClient FROM P01_ReservationChambre WHERE NoClient = " + NoClient;
+                        SqlCommand comm = new SqlCommand(requete, con);
+
+                        SqlDataReader dr = comm.ExecuteReader();
+                        if (dr.HasRows)
+                        {   // Client lie a un invite/reservationChambre/planifSoin
+                            MessageBox.Show("La suppression de ce client est impossible." +
+                                "\nVeuillez assurer qu'il n'existe aucun invité, réservation de chambre ou soin plannifié" +
+                                "\nassocié au client avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        else
+                        {   // Client associe a rien
+                            string requete2 = "DELETE FROM P01_Client WHERE NoClient = " + NoClient;
+                            SqlCommand comm2 = new SqlCommand(requete2, con);
+                            comm2.ExecuteNonQuery();
+
+                            MessageBox.Show("Le client a été supprimé.", "Client supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.p01_ClientBindingSource.EndEdit();
+                            this.p01_ClientTableAdapter.Update(this.bDB56AnkitDataSet.P01_Client);
+                        }
+
+                        con.Close();
+                    }
+                    break;
+                case 3:
+                    NoAssistant = cboAssistants.SelectedValue.ToString();
+                    using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+                    {
+                        con.Open();
+                        string requete = "SELECT A.NoAssistant FROM P01_AssistantSoin A WHERE A.NoAssistant = " + NoAssistant +
+                            " UNION SELECT P.NoAssistant FROM P01_PlanifSoin P WHERE P.NoAssistant = " + NoAssistant;
+                        SqlCommand comm = new SqlCommand(requete, con);
+
+                        SqlDataReader dr = comm.ExecuteReader();
+                        if (dr.HasRows)
+                        {   // Assitant lié a un soin/planifSoin
+                            MessageBox.Show("La suppression de cet assistant est impossible." +
+                                "\nVeuillez assurer qu'il n'existe aucun soin plannifié ou soin" +
+                                "\nassocié a l'assistant avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        else
+                        {   // Assistant associé a rien
+                            string requete2 = "DELETE FROM P01_Assistant WHERE NoAssistant = " + NoAssistant;
+                            SqlCommand comm2 = new SqlCommand(requete2, con);
+                            comm2.ExecuteNonQuery();
+
+                            MessageBox.Show("L'assistant a été supprimé.", "Assistant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.p01_AssistantBindingSource.EndEdit();
+                            this.p01_AssistantTableAdapter.Update(this.bDB56AnkitDataSet.P01_Assistant);
+                        }
+                        con.Close();
+                    }
+                    break;
+                case 4:
+                    NoSoin = cboSoins.SelectedValue.ToString();
+                    using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+                    {
+                        con.Open();
+                        // check assistantSoin AND planifSoin
+                        string requete = "SELECT A.NoSoin FROM P01_AssistantSoin A WHERE A.NoSoin = " + NoSoin +
+                            " UNION SELECT P.NoSoin FROM P01_PlanifSoin P WHERE P.NoSoin = " + NoSoin;
+                        SqlCommand comm = new SqlCommand(requete, con);
+
+                        SqlDataReader dr = comm.ExecuteReader();
+                        if (dr.HasRows)
+                        {   // Soin lié a un assistantSoin/planifSoin
+                            MessageBox.Show("La suppression de ce soin est impossible." +
+                                "\nVeuillez assurer qu'il n'existe aucun soin plannifié ou assistant" +
+                                "\nassocié au soin avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        else
+                        {   // Soin associé a rien
+                            string requete2 = "DELETE FROM P01_Soin WHERE NoSoin = " + NoSoin;
+                            SqlCommand comm2 = new SqlCommand(requete2, con);
+                            comm2.ExecuteNonQuery();
+
+                            MessageBox.Show("Le soin a été supprimé.", "Soin supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.p01_SoinBindingSource.EndEdit();
+                            this.p01_SoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_Soin);
+                        }
+                        con.Close();
+                    }
+                    break;
+                case 5:
+                    NoChambre = cboChambres.SelectedValue.ToString();
+                    using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+                    {
+                        con.Open();
+                        // check reservationChambre
+                        string requete = "SELECT NoChambre FROM P01_ReservationChambre A WHERE NoChambre = " + NoChambre;
+                        SqlCommand comm = new SqlCommand(requete, con);
+
+                        SqlDataReader dr = comm.ExecuteReader();
+                        if (dr.HasRows)
+                        {   // Chambre lié a un reservationChambre
+                            MessageBox.Show("La suppression de cette chambre est impossible." +
+                                "\nVeuillez assurer qu'elle n'est associéw a aucune réservation" +
+                                "\navamt de la supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        else
+                        {   // Soin associé a rien
+                            string requete2 = "DELETE FROM P01_Chambre WHERE NoChambre = " + NoChambre;
+                            SqlCommand comm2 = new SqlCommand(requete2, con);
+                            comm2.ExecuteNonQuery();
+
+                            MessageBox.Show("La chambre a été supprimée.", "Chambre supprimée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.p01_ChambreBindingSource.EndEdit();
+                            this.p01_ChambreTableAdapter.Update(this.bDB56AnkitDataSet.P01_Chambre);
+                        }
+                        con.Close();
+                    }
+                    break;
+                default:
+                    MessageBox.Show("this aint right", "bug suppr");
+                    break;
+            }
         }
 
         private void utilisateursToolStripMenuItem_Click(object sender, EventArgs e)
@@ -323,10 +487,11 @@ namespace Projet01
             this.Show();
         }
 
+        // SUPPRIMER INVITER
         private void btnSupprimeInvite_Click(object sender, EventArgs e)
         {
             NoInvite = cboInvite.SelectedValue.ToString();
-            // Suprimmer invite
+            // S-----------------------------------------------------------------------------------------------------------------------S
             // check reservationChambre et planifSoin avant de delete
         }
 
@@ -354,8 +519,31 @@ namespace Projet01
         private void btnSupprTypeChambre_Click(object sender, EventArgs e)
         {
             NoTypeChambre = cboTypeChambre.SelectedValue.ToString();
-            // Supprimer type chambre
-            // Check chambres, reservationChambres then proceed to delete
+
+            using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+            {
+                con.Open();
+                string requete = "SELECT NoChambre FROM P01_Chambre WHERE NoTypeChambre = " + NoTypeChambre;
+                SqlCommand comm = new SqlCommand(requete, con);
+
+                SqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {   // Supression impossible car chambre de ce type existent
+                    MessageBox.Show("La suppression du type n'est pas possible puisqu'il existe des chambres de ce type.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string requete2 = "DELETE FROM P01_TypeChambre WHERE NoTypeChambre = " + NoTypeChambre;
+                    SqlCommand comm2 = new SqlCommand(requete2, con);
+                    comm2.ExecuteNonQuery();
+
+                    MessageBox.Show("La réservation a été anullée.", "Réservation anullée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.p01_TypeChambreBindingSource.EndEdit();
+                    this.p01_TypeChambreTableAdapter.Update(this.bDB56AnkitDataSet.P01_TypeChambre);
+                }
+
+                con.Close();
+            }
         }
 
         // Reserver une chambre
@@ -514,14 +702,25 @@ namespace Projet01
             {
                 con.Open();
                 // il faut checker table planifSoin, then assistantSoin, then soin, if all good delete, else error messageBox
-
-                /*
-                string requete = "DELETE FROM P01_TypeSoin WHERE NoTypeSoin = " + NoTypeSoin;
+                string requete = "SELECT NoSoin FROM P01_Soin WHERE NoTypeSoin = " + NoTypeSoin;
                 SqlCommand comm = new SqlCommand(requete, con);
 
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Le type de soin a été retiré.", "Soin retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                */
+                SqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {   // Supression impossible, soins du type existent
+                    MessageBox.Show("La suppression du type n'est pas possible puisqu'il existe des soins de ce type.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {   // Aucun soin avec le type choisi, supression possible
+                    string requete2 = "DELETE FROM P01_TypeSoin WHERE NoTypeSoin = " + NoTypeSoin;
+                    SqlCommand comm2 = new SqlCommand(requete2, con);
+
+                    comm2.ExecuteNonQuery();
+                    MessageBox.Show("Le type de soin a été retiré.", "Soin retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.p01_TypeSoinBindingSource.EndEdit();
+                    this.p01_TypeSoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_TypeSoin);
+                }
+                
                 con.Close();
             }
         }
@@ -536,6 +735,6 @@ namespace Projet01
             planif.ShowDialog();
             this.Show();
         }
-        
+
     }
 }

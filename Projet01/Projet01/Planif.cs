@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Projet01
 {
@@ -39,8 +40,11 @@ namespace Projet01
             this.nom_Numero_InvitesTableAdapter.Fill(this.bDB56AnkitDataSet.Nom_Numero_Invites);
             rbClient.Checked = true;
             tbSoin.Text = NomSoin;
-            TimePicker.Format = DateTimePickerFormat.Time;
+            TimePicker.Format = DateTimePickerFormat.Time; 
+            TimePicker.CustomFormat = "HH:mm:ss";
             TimePicker.ShowUpDown = true;
+           
+            datePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
         }
 
         private void btn_Annuler_Click(object sender, EventArgs e)
@@ -51,33 +55,64 @@ namespace Projet01
 
         private void btn_ajouter_Click(object sender, EventArgs e)
         {
-            DateTime tempsPlanif = datePicker.Value.Date + TimePicker.Value.TimeOfDay;
+            //DateTime tempsPlanif = datePicker.Value.Date + TimePicker.Value.TimeOfDay;
+            DateTime tempsPlanif = datePicker.Value;
+            DataRowView Personnes = CbPersonnes.SelectedItem as DataRowView;
+            DataRowView Assistants = p01_AssistantComboBox.SelectedItem as DataRowView;
+            string strAssistant = Assistants.Row["Prenom"] as string;
+            string strNoPersonne = "";
+            if (rbClient.Checked == true)
+                strNoPersonne = Personnes.Row["No_Nom_client"] as string;
+            else
+                strNoPersonne = Personnes.Row["Nom_Numero_Invites"] as string;
+            strNoPersonne = strNoPersonne.Substring(strNoPersonne.LastIndexOf(',') + 1);
+            int NoPersonne = Int32.Parse(strNoPersonne);
 
-            //if(tempsPlanif.Hour)
-            MessageBox.Show("Voici le temps sélectionné " + tempsPlanif.Minute, "Temps", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            /* SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
-             maConnexion.Open();
-             String maRequeteSQL = "insert into P01_Soin(NoSoin,Description,Duree,NoTypeSoin,prix) values('" + int.Parse(noSoinTextBox.Text.ToString()) + "','" + descriptionTextBox.Text.ToString() + "','" + int.Parse(dureeTextBox.Text.ToString()) + "','" + int.Parse(noTypeSoinTextBox.Text.ToString()) + "','" + int.Parse(prixTextBox.Text.ToString()) + "')";
-             SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
-             maCommande.ExecuteScalar();
-             maConnexion.Close();
 
-             this.p01_SoinBindingSource.EndEdit();
-             this.p01_SoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_Soin);
-             MessageBox.Show("Le nouveau type de soin a été ajouté.", "Nouveau type de soin enregistré", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             this.Close();*/
+            SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
+            maConnexion.Open();
+
+            String maRequeteSQL = "select NoAssistant from P01_Assistant where Prenom= '" + strAssistant + "'";
+            SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
+            Object NoAssistant = maCommande.ExecuteScalar();
+            maConnexion.Close();
+            if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
+                MessageBox.Show("Veuillez sélectionner une heure de réservation entre 8h et 17h ", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+
+                //MessageBox.Show("Voici le numero d'assistant  " + resultat, "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                maConnexion.Open();
+                maRequeteSQL = "insert into P01_PlanifSoin(NoPersonne,NoAssistant,DateHeure,NoSoin) values(" + NoPersonne + "," + Int32.Parse(NoAssistant.ToString()) 
+                    + "," + tempsPlanif + "," + NoSoin + ")";
+                maCommande = new SqlCommand(maRequeteSQL, maConnexion);
+                maCommande.ExecuteScalar();
+                maConnexion.Close();
+
+                this.p01_SoinBindingSource.EndEdit();
+                this.p01_SoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_Soin);
+                MessageBox.Show("La nouvelle planification à été ajoutée avec succès.", "Nouvelle planification enregistré", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
 
         private void rbClient_CheckedChanged(object sender, EventArgs e)
         {
             CbPersonnes.DataSource = this.noEtNomComplet_ClientBindingSource;
             CbPersonnes.DisplayMember = "No_Nom_Client";
+            
         }
 
         private void rbInvite_CheckedChanged(object sender, EventArgs e)
         {
             CbPersonnes.DataSource = this.nomNumeroInvitesBindingSource;
             CbPersonnes.DisplayMember = "Nom_Numero_Invites";
+        }
+
+        private void TimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
