@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DD9D69F-A346-4352-9A1D-0D1E3F036856}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Projet01</RootNamespace>
+    <AssemblyName>Projet01</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDB56AnkitDataSet.cs">
+      <DependentUpon>BDB56AnkitDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BDB56AnkitDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDB56AnkitDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssistant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssistant.Designer.cs">
+      <DependentUpon>frmAssistant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChambre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChambre.Designer.cs">
+      <DependentUpon>frmChambre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnexion.Designer.cs">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvite.Designer.cs">
+      <DependentUpon>frmInvite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanifSoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanifSoin.Designer.cs">
+      <DependentUpon>frmPlanifSoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrepose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrepose.Designer.cs">
+      <DependentUpon>frmPrepose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReservationChambre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReservationChambre.Designer.cs">
+      <DependentUpon>frmReservationChambre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSoin.Designer.cs">
+      <DependentUpon>frmSoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTypeChambre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTypeChambre.Designer.cs">
+      <DependentUpon>frmTypeChambre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTypeSoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTypeSoin.Designer.cs">
+      <DependentUpon>frmTypeSoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUtilisateur.Designer.cs">
+      <DependentUpon>frmUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planif.Designer.cs">
+      <DependentUpon>Planif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAssistant.resx">
+      <DependentUpon>frmAssistant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChambre.resx">
+      <DependentUpon>frmChambre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnexion.resx">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvite.resx">
+      <DependentUpon>frmInvite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanifSoin.resx">
+      <DependentUpon>frmPlanifSoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrepose.resx">
+      <DependentUpon>frmPrepose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReservationChambre.resx">
+      <DependentUpon>frmReservationChambre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSoin.resx">
+      <DependentUpon>frmSoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTypeChambre.resx">
+      <DependentUpon>frmTypeChambre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTypeSoin.resx">
+      <DependentUpon>frmTypeSoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUtilisateur.resx">
+      <DependentUpon>frmUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planif.resx">
+      <DependentUpon>Planif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="BDB56AnkitDataSet.xsc">
+      <DependentUpon>BDB56AnkitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BDB56AnkitDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDB56AnkitDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDB56AnkitDataSet.xss">
+      <DependentUpon>BDB56AnkitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
