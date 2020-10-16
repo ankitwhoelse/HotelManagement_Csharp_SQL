@@ -42,12 +42,14 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnConfirmer = new System.Windows.Forms.Button();
             this.p01_ClientTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_ClientTableAdapter();
-            this.cboClient = new System.Windows.Forms.ComboBox();
             this.p01_ClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nbPersonnesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableAdapterManager = new Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager();
             this.p01_ReservationChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p01_ReservationChambreTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_ReservationChambreTableAdapter();
+            this.nosEtNomsClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nosEtNomsClientsTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter();
+            this.cboClient = new System.Windows.Forms.ComboBox();
             noClientLabel = new System.Windows.Forms.Label();
             noChambreLabel = new System.Windows.Forms.Label();
             dateArriveeLabel = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p01_ClientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbPersonnesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // noClientLabel
@@ -64,9 +67,9 @@
             noClientLabel.AutoSize = true;
             noClientLabel.Location = new System.Drawing.Point(16, 76);
             noClientLabel.Name = "noClientLabel";
-            noClientLabel.Size = new System.Drawing.Size(53, 13);
+            noClientLabel.Size = new System.Drawing.Size(36, 13);
             noClientLabel.TabIndex = 1;
-            noClientLabel.Text = "No Client:";
+            noClientLabel.Text = "Client:";
             // 
             // noChambreLabel
             // 
@@ -166,18 +169,6 @@
             // 
             this.p01_ClientTableAdapter.ClearBeforeFill = true;
             // 
-            // cboClient
-            // 
-            this.cboClient.DataSource = this.p01_ClientBindingSource;
-            this.cboClient.DisplayMember = "Nom";
-            this.cboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboClient.FormattingEnabled = true;
-            this.cboClient.Location = new System.Drawing.Point(99, 73);
-            this.cboClient.Name = "cboClient";
-            this.cboClient.Size = new System.Drawing.Size(171, 21);
-            this.cboClient.TabIndex = 30;
-            this.cboClient.ValueMember = "NoClient";
-            // 
             // p01_ClientBindingSource
             // 
             this.p01_ClientBindingSource.DataMember = "P01_Client";
@@ -209,6 +200,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = null;
@@ -232,13 +224,34 @@
             // 
             this.p01_ReservationChambreTableAdapter.ClearBeforeFill = true;
             // 
+            // nosEtNomsClientsBindingSource
+            // 
+            this.nosEtNomsClientsBindingSource.DataMember = "nosEtNomsClients";
+            this.nosEtNomsClientsBindingSource.DataSource = this.bDB56AnkitDataSet;
+            // 
+            // nosEtNomsClientsTableAdapter
+            // 
+            this.nosEtNomsClientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // cboClient
+            // 
+            this.cboClient.DataSource = this.nosEtNomsClientsBindingSource;
+            this.cboClient.DisplayMember = "NomComplet";
+            this.cboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClient.FormattingEnabled = true;
+            this.cboClient.Location = new System.Drawing.Point(99, 73);
+            this.cboClient.Name = "cboClient";
+            this.cboClient.Size = new System.Drawing.Size(171, 21);
+            this.cboClient.TabIndex = 31;
+            this.cboClient.ValueMember = "NoClient";
+            // 
             // frmReservationChambre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 257);
-            this.Controls.Add(this.nbPersonnesNumericUpDown);
+            this.ClientSize = new System.Drawing.Size(291, 251);
             this.Controls.Add(this.cboClient);
+            this.Controls.Add(this.nbPersonnesNumericUpDown);
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnConfirmer);
@@ -260,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p01_ClientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbPersonnesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,9 +291,11 @@
         private System.Windows.Forms.Button btnConfirmer;
         private System.Windows.Forms.BindingSource p01_ClientBindingSource;
         private BDB56AnkitDataSetTableAdapters.P01_ClientTableAdapter p01_ClientTableAdapter;
-        private System.Windows.Forms.ComboBox cboClient;
         private System.Windows.Forms.NumericUpDown nbPersonnesNumericUpDown;
         private System.Windows.Forms.BindingSource p01_ReservationChambreBindingSource;
         private BDB56AnkitDataSetTableAdapters.P01_ReservationChambreTableAdapter p01_ReservationChambreTableAdapter;
+        private System.Windows.Forms.BindingSource nosEtNomsClientsBindingSource;
+        private BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter nosEtNomsClientsTableAdapter;
+        private System.Windows.Forms.ComboBox cboClient;
     }
 }

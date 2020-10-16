@@ -167,6 +167,7 @@
             // nomUtilisateurTextBox
             // 
             this.nomUtilisateurTextBox.Location = new System.Drawing.Point(115, 87);
+            this.nomUtilisateurTextBox.MaxLength = 15;
             this.nomUtilisateurTextBox.Name = "nomUtilisateurTextBox";
             this.nomUtilisateurTextBox.Size = new System.Drawing.Size(100, 20);
             this.nomUtilisateurTextBox.TabIndex = 0;
@@ -174,6 +175,7 @@
             // motDePasseUtilisateurTextBox
             // 
             this.motDePasseUtilisateurTextBox.Location = new System.Drawing.Point(115, 113);
+            this.motDePasseUtilisateurTextBox.MaxLength = 15;
             this.motDePasseUtilisateurTextBox.Name = "motDePasseUtilisateurTextBox";
             this.motDePasseUtilisateurTextBox.Size = new System.Drawing.Size(100, 20);
             this.motDePasseUtilisateurTextBox.TabIndex = 1;

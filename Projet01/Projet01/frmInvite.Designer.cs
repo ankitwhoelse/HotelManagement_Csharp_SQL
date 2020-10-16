@@ -124,6 +124,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = null;
@@ -149,6 +150,7 @@
             // nomPrenomTextBox
             // 
             this.nomPrenomTextBox.Location = new System.Drawing.Point(107, 82);
+            this.nomPrenomTextBox.MaxLength = 30;
             this.nomPrenomTextBox.Name = "nomPrenomTextBox";
             this.nomPrenomTextBox.Size = new System.Drawing.Size(100, 20);
             this.nomPrenomTextBox.TabIndex = 0;
@@ -165,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 236);
+            this.ClientSize = new System.Drawing.Size(263, 236);
             this.Controls.Add(this.nomClientTextBox);
             this.Controls.Add(this.nomPrenomTextBox);
             this.Controls.Add(this.noInviteTextBox);
@@ -175,6 +177,9 @@
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnConfirmer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInvite";
             this.Text = "frmInvite";
             this.Load += new System.EventHandler(this.frmInvite_Load);

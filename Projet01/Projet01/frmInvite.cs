@@ -46,26 +46,31 @@ namespace Projet01
             using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
             {
                 con.Open();
-                string requete = "SELECT Nom FROM P01_Client WHERE NoClient = " + NoClient;
+                string requete = "SELECT Nom, Prenom FROM P01_Client WHERE NoClient = " + NoClient;
                 SqlCommand com = new SqlCommand(requete, con);
 
-                dynamic retour = com.ExecuteScalar();
-                nomClientTextBox.Text = retour.ToString();
+                SqlDataReader dr = com.ExecuteReader();
+                dr.Read();
+                nomClientTextBox.Text = dr[1].ToString() + " " + dr[0].ToString();
                 con.Close();
             }
 
-                if (booAjout)
+            if (booAjout)
             {
+                lblTitre.Text = "Ajouter un invité";
+                
                 // Remplir automatiquement le champ du NoInvite puis celui du nom du client
                 using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
                 {
                     con.Open();
-                    string requete = "SELECT MAX(NoInvite) FROM P01_Invite WHERE NoInvite > @NoClient AND NoInvite < @NoClient+10";
+                    string requete = "SELECT ISNULL(MAX(NoInvite),0) FROM P01_Invite WHERE NoInvite > @NoClient AND NoInvite < @NoClient+10";
                     SqlParameter param = new SqlParameter("@NoClient", NoClient);
                     SqlCommand com = new SqlCommand(requete, con);
                     com.Parameters.Add(param);
 
                     dynamic max = com.ExecuteScalar();
+                    if (max == 0)
+                        max = int.Parse(NoClient);
                     max++;
                     // Verification du nombre d'invite pour le client
                     if (max % 10 != 0)
@@ -80,7 +85,6 @@ namespace Projet01
                     con.Close();
                 }
 
-                lblTitre.Text = "Ajouter un invité";
                 btnConfirmer.Text = "Ajouter";
                 this.Text = "Ajouter un invité";
             }

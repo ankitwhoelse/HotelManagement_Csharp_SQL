@@ -137,6 +137,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.Location = new System.Drawing.Point(94, 104);
+            this.descriptionTextBox.MaxLength = 30;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(124, 20);
             this.descriptionTextBox.TabIndex = 0;

@@ -50,7 +50,6 @@ namespace Projet01
         private void btn_Annuler_Click(object sender, EventArgs e)
         {
             this.Hide();
-           
         }
 
         private void btn_ajouter_Click(object sender, EventArgs e)
@@ -76,6 +75,7 @@ namespace Projet01
             SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
             Object NoAssistant = maCommande.ExecuteScalar();
             maConnexion.Close();
+
             if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
                 MessageBox.Show("Veuillez sélectionner une heure de réservation entre 8h et 17h ", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
@@ -85,7 +85,7 @@ namespace Projet01
 
                 maConnexion.Open();
                 maRequeteSQL = "insert into P01_PlanifSoin(NoPersonne,NoAssistant,DateHeure,NoSoin) values(" + NoPersonne + "," + Int32.Parse(NoAssistant.ToString()) 
-                    + "," + tempsPlanif + "," + NoSoin + ")";
+                    + ",'" + tempsPlanif.ToString("yyyy-MM-dd HH:mm:ss") + "'," + NoSoin + ")";
                 maCommande = new SqlCommand(maRequeteSQL, maConnexion);
                 maCommande.ExecuteScalar();
                 maConnexion.Close();
@@ -110,9 +110,5 @@ namespace Projet01
             CbPersonnes.DisplayMember = "Nom_Numero_Invites";
         }
 
-        private void TimePicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -24,7 +24,6 @@ namespace Projet01
 
         private int choixMenu;
         private bool booAjout;
-        // lol
 
         frmUtilisateur frmU = new frmUtilisateur();
         frmClient frmCl = new frmClient();
@@ -65,9 +64,10 @@ namespace Projet01
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.nosEtNomsClients' table. You can move, or remove it, as needed.
+            this.nosEtNomsClientsTableAdapter.Fill(this.bDB56AnkitDataSet.nosEtNomsClients);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_ReservationChambre' table. You can move, or remove it, as needed.
             this.p01_ReservationChambreTableAdapter1.Fill(this.bDB56AnkitDataSet.P01_ReservationChambre);
-           
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_PlanifSoin' table. You can move, or remove it, as needed.
             this.p01_PlanifSoinTableAdapter.Fill(this.bDB56AnkitDataSet.P01_PlanifSoin);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_TypeSoin' table. You can move, or remove it, as needed.
@@ -193,7 +193,7 @@ namespace Projet01
                         MessageBox.Show("La suppression du compte admin est impossible.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
-                    else if (NoUtilisateur == NoUtilisateurDel)
+                    else if (NoUtilisateur.ToString() == NoUtilisateurDel)
                     {   // Dont self delete pls
                         MessageBox.Show("La suppression de votre propre compte est impossible.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
@@ -230,10 +230,12 @@ namespace Projet01
                             MessageBox.Show("La suppression de ce client est impossible." +
                                 "\nVeuillez assurer qu'il n'existe aucun invité, réservation de chambre ou soin plannifié" +
                                 "\nassocié au client avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dr.Close();
                             break;
                         }
                         else
                         {   // Client associe a rien
+                            dr.Close();
                             string requete2 = "DELETE FROM P01_Client WHERE NoClient = " + NoClient;
                             SqlCommand comm2 = new SqlCommand(requete2, con);
                             comm2.ExecuteNonQuery();
@@ -261,10 +263,12 @@ namespace Projet01
                             MessageBox.Show("La suppression de cet assistant est impossible." +
                                 "\nVeuillez assurer qu'il n'existe aucun soin plannifié ou soin" +
                                 "\nassocié a l'assistant avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dr.Close();
                             break;
                         }
                         else
                         {   // Assistant associé a rien
+                            dr.Close();
                             string requete2 = "DELETE FROM P01_Assistant WHERE NoAssistant = " + NoAssistant;
                             SqlCommand comm2 = new SqlCommand(requete2, con);
                             comm2.ExecuteNonQuery();
@@ -292,10 +296,12 @@ namespace Projet01
                             MessageBox.Show("La suppression de ce soin est impossible." +
                                 "\nVeuillez assurer qu'il n'existe aucun soin plannifié ou assistant" +
                                 "\nassocié au soin avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dr.Close();
                             break;
                         }
                         else
                         {   // Soin associé a rien
+                            dr.Close();
                             string requete2 = "DELETE FROM P01_Soin WHERE NoSoin = " + NoSoin;
                             SqlCommand comm2 = new SqlCommand(requete2, con);
                             comm2.ExecuteNonQuery();
@@ -322,10 +328,12 @@ namespace Projet01
                             MessageBox.Show("La suppression de cette chambre est impossible." +
                                 "\nVeuillez assurer qu'elle n'est associéw a aucune réservation" +
                                 "\navamt de la supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dr.Close();
                             break;
                         }
                         else
                         {   // Soin associé a rien
+                            dr.Close();
                             string requete2 = "DELETE FROM P01_Chambre WHERE NoChambre = " + NoChambre;
                             SqlCommand comm2 = new SqlCommand(requete2, con);
                             comm2.ExecuteNonQuery();
@@ -351,6 +359,7 @@ namespace Projet01
             cboUtilisateurs.Visible = true;
             gbInfoUtilisateur.Visible = true;
 
+            nosEtNomsClientsComboBox.Visible = false;
             gbReservation.Visible = false;
             gbPlanifSoin.Visible = false;
             gbInfoTypeSoin.Visible = false;
@@ -375,6 +384,7 @@ namespace Projet01
             cboClients.Visible = true;
             gbInfoClient.Visible = true;
             gbInfoInvite.Visible = true;
+            nosEtNomsClientsComboBox.Visible = true;
 
             gbReservation.Visible = false;
             gbPlanifSoin.Visible = false;
@@ -400,6 +410,7 @@ namespace Projet01
             gbInfoAssistants.Visible = true;
             gbAssistantSoin.Visible = true;
 
+            nosEtNomsClientsComboBox.Visible = false;
             gbReservation.Visible = false;
             gbPlanifSoin.Visible = false;
             gbInfoTypeSoin.Visible = false;
@@ -425,6 +436,7 @@ namespace Projet01
             gbInfoTypeSoin.Visible = true;
             gbPlanifSoin.Visible = true;
 
+            nosEtNomsClientsComboBox.Visible = false;
             gbReservation.Visible = false;
             gbAssistantSoin.Visible = false;
             gbInfoTypeChambre.Visible = false;
@@ -440,7 +452,7 @@ namespace Projet01
         }
 
         private void chambresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {               // Gestion des chambres
             choixMenu = 5;
             lblChoix.Text = "Gestion des chambres";
             lblSelection.Text = "Veuillez selectionnez \nune chambre.";
@@ -449,6 +461,7 @@ namespace Projet01
             gbInfoTypeChambre.Visible = true;
             gbReservation.Visible = true;
 
+            nosEtNomsClientsComboBox.Visible = false;
             gbPlanifSoin.Visible = false;
             gbInfoTypeSoin.Visible = false;
             gbAssistantSoin.Visible = false;
@@ -491,8 +504,34 @@ namespace Projet01
         private void btnSupprimeInvite_Click(object sender, EventArgs e)
         {
             NoInvite = cboInvite.SelectedValue.ToString();
-            // S-----------------------------------------------------------------------------------------------------------------------S
-            // check reservationChambre et planifSoin avant de delete
+            // check planifSoin avant de delete
+            using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+            {
+                con.Open();
+                string requete = "SELECT NoPersonne FROM P01_PlanifSoin WHERE NoPersonne = " + NoInvite;
+                SqlCommand comm = new SqlCommand(requete, con);
+
+                SqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {   // Invité lié a un soin/planifSoin
+                    MessageBox.Show("La suppression de cet invité est impossible." +
+                        "\nVeuillez assurer qu'il n'existe aucun soin plannifié " +
+                        "\npour l'invité avamt de lui supprimer.", "Erreur de supression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dr.Close();
+                }
+                else
+                {   // Invité associé a rien
+                    dr.Close();
+                    string requete2 = "DELETE FROM P01_Invite WHERE NoInvite = " + NoInvite;
+                    SqlCommand comm2 = new SqlCommand(requete2, con);
+                    comm2.ExecuteNonQuery();
+
+                    MessageBox.Show("L'invité a été supprimé.", "Invité supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.p01_InviteBindingSource.EndEdit();
+                    this.p01_InviteTableAdapter.Update(this.bDB56AnkitDataSet.P01_Invite);
+                }
+                con.Close();
+            }
         }
 
         // Ajouter type de chambre
@@ -530,9 +569,11 @@ namespace Projet01
                 if (dr.HasRows)
                 {   // Supression impossible car chambre de ce type existent
                     MessageBox.Show("La suppression du type n'est pas possible puisqu'il existe des chambres de ce type.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dr.Close();
                 }
                 else
                 {
+                    dr.Close();
                     string requete2 = "DELETE FROM P01_TypeChambre WHERE NoTypeChambre = " + NoTypeChambre;
                     SqlCommand comm2 = new SqlCommand(requete2, con);
                     comm2.ExecuteNonQuery();
@@ -709,9 +750,11 @@ namespace Projet01
                 if (dr.HasRows)
                 {   // Supression impossible, soins du type existent
                     MessageBox.Show("La suppression du type n'est pas possible puisqu'il existe des soins de ce type.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dr.Close();
                 }
                 else
                 {   // Aucun soin avec le type choisi, supression possible
+                    dr.Close();
                     string requete2 = "DELETE FROM P01_TypeSoin WHERE NoTypeSoin = " + NoTypeSoin;
                     SqlCommand comm2 = new SqlCommand(requete2, con);
 
@@ -736,5 +779,42 @@ namespace Projet01
             this.Show();
         }
 
+        private void nosEtNomsClientsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboClients.SelectedValue = nosEtNomsClientsComboBox.SelectedValue;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dynamic NoPersonne = cboPlanifSoins.SelectedValue.ToString();
+            NoSoin = noSoinTextBox1.Text;
+            NoAssistant = noAssistantTextBox1.Text;
+
+            using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+            {
+                con.Open();
+                DateTime dateSoin = dateHeureDateTimePicker.Value;
+
+                if (DateTime.Compare(dateSoin, DateTime.Now) < 0)
+                {   // Date soin plus tard que date du jour
+                    MessageBox.Show("La suppression n'est pas possible puisque la date du soin est passée.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string requete = "DELETE FROM P01_PlanifSoin WHERE NoPersonne = " + NoPersonne + " AND NoAssistant = " + NoAssistant + " AND NoSoin = " + NoSoin;
+                    SqlCommand comm = new SqlCommand(requete, con);
+
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("La planification du soin a été retiré.", "Rendez-vous retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.p01_PlanifSoinBindingSource.EndEdit();
+                    this.p01_PlanifSoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_PlanifSoin);
+
+                    this.frmAdmin_Load(this, e);
+                }
+                
+                con.Close();
+            }
+        }
+        
     }
 }

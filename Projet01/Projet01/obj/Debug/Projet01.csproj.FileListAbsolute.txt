@@ -98,7 +98,6 @@ C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Proje
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmClient.resources
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmConnexion.resources
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmInvite.resources
-C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmPlanifSoin.resources
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmPrepose.resources
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmReservationChambre.resources
 C:\Users\Ankit-PC\Documents\Gerald-Godin\Bases de données 3\Visual Studio Projects\Projet01\Projet01\Projet01\obj\Debug\Projet01.frmSoin.resources

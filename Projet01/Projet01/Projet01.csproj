@@ -90,12 +90,6 @@
     <Compile Include="frmInvite.Designer.cs">
       <DependentUpon>frmInvite.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPlanifSoin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPlanifSoin.Designer.cs">
-      <DependentUpon>frmPlanifSoin.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPrepose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,9 +151,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvite.resx">
       <DependentUpon>frmInvite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPlanifSoin.resx">
-      <DependentUpon>frmPlanifSoin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrepose.resx">
       <DependentUpon>frmPrepose.cs</DependentUpon>

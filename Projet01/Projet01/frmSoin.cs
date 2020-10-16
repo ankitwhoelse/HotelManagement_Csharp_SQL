@@ -25,6 +25,8 @@ namespace Projet01
         
         private void frmSoin_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_TypeSoin' table. You can move, or remove it, as needed.
+            this.p01_TypeSoinTableAdapter.Fill(this.bDB56AnkitDataSet.P01_TypeSoin);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Soin' table. You can move, or remove it, as needed.
             this.p01_SoinTableAdapter.Fill(this.bDB56AnkitDataSet.P01_Soin);
             
@@ -69,7 +71,7 @@ namespace Projet01
                     {
                         descriptionTextBox.Text = dr[1].ToString();
                         dureeTextBox.Text = dr[2].ToString();
-                        noTypeSoinTextBox.Text = dr[3].ToString();
+                        cboTypeSoin.SelectedValue = dr[3].ToString();
                         prixTextBox.Text = dr[4].ToString();
                     }
 
@@ -93,7 +95,9 @@ namespace Projet01
                     // AJOUT
                     SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
                     maConnexion.Open();
-                    String maRequeteSQL = "insert into P01_Soin(NoSoin,Description,Duree,NoTypeSoin,prix) values('" + int.Parse(noSoinTextBox.Text.ToString()) + "','" + descriptionTextBox.Text.ToString() + "','" + int.Parse(dureeTextBox.Text.ToString()) + "','" + int.Parse(noTypeSoinTextBox.Text.ToString()) + "','" + int.Parse(prixTextBox.Text.ToString()) + "')";
+                    String maRequeteSQL = "insert into P01_Soin(NoSoin,Description,Duree,NoTypeSoin,prix) values('" + int.Parse(noSoinTextBox.Text.ToString()) + "','" 
+                        + descriptionTextBox.Text.ToString() + "','" + int.Parse(dureeTextBox.Text.ToString()) + "','" + int.Parse(cboTypeSoin.SelectedValue.ToString()) 
+                        + "','" + int.Parse(prixTextBox.Text.ToString()) + "')";
                     SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
                     maCommande.ExecuteScalar();
                     maConnexion.Close();
@@ -108,7 +112,9 @@ namespace Projet01
                     // MODIF
                     SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
                     maConnexion.Open();
-                    String maRequeteSQL = "update P01_Soin set Description = '" + descriptionTextBox.Text.ToString() + "', Duree = " + int.Parse(dureeTextBox.Text.ToString()) + ", NoTypeSoin = " + int.Parse(noTypeSoinTextBox.Text.ToString()) + ", prix = " + Math.Round(double.Parse(prixTextBox.Text.ToString())) + " where NoSoin =" + noSoinTextBox.Text.ToString();
+                    String maRequeteSQL = "update P01_Soin set Description = '" + descriptionTextBox.Text.ToString() + "', Duree = " + int.Parse(dureeTextBox.Text.ToString())
+                        + ", NoTypeSoin = " + int.Parse(cboTypeSoin.SelectedValue.ToString()) + ", prix = " + Math.Round(double.Parse(prixTextBox.Text.ToString())) 
+                        + " where NoSoin =" + noSoinTextBox.Text.ToString();
                     SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
                     maCommande.ExecuteScalar();
                     maConnexion.Close();
@@ -136,5 +142,9 @@ namespace Projet01
             }
         }
 
+        private void p01_TypeSoinComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

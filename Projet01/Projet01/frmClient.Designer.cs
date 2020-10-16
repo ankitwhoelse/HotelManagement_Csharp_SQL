@@ -178,6 +178,7 @@
             // nomTextBox
             // 
             this.nomTextBox.Location = new System.Drawing.Point(108, 74);
+            this.nomTextBox.MaxLength = 15;
             this.nomTextBox.Name = "nomTextBox";
             this.nomTextBox.Size = new System.Drawing.Size(200, 20);
             this.nomTextBox.TabIndex = 0;
@@ -185,6 +186,7 @@
             // prenomTextBox
             // 
             this.prenomTextBox.Location = new System.Drawing.Point(108, 100);
+            this.prenomTextBox.MaxLength = 15;
             this.prenomTextBox.Name = "prenomTextBox";
             this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
             this.prenomTextBox.TabIndex = 1;
@@ -192,6 +194,7 @@
             // villeTextBox
             // 
             this.villeTextBox.Location = new System.Drawing.Point(108, 126);
+            this.villeTextBox.MaxLength = 30;
             this.villeTextBox.Name = "villeTextBox";
             this.villeTextBox.Size = new System.Drawing.Size(200, 20);
             this.villeTextBox.TabIndex = 2;
@@ -199,6 +202,7 @@
             // paysTextBox
             // 
             this.paysTextBox.Location = new System.Drawing.Point(108, 152);
+            this.paysTextBox.MaxLength = 30;
             this.paysTextBox.Name = "paysTextBox";
             this.paysTextBox.Size = new System.Drawing.Size(200, 20);
             this.paysTextBox.TabIndex = 3;
@@ -206,6 +210,7 @@
             // adresseTextBox
             // 
             this.adresseTextBox.Location = new System.Drawing.Point(108, 178);
+            this.adresseTextBox.MaxLength = 30;
             this.adresseTextBox.Name = "adresseTextBox";
             this.adresseTextBox.Size = new System.Drawing.Size(200, 20);
             this.adresseTextBox.TabIndex = 4;
@@ -213,6 +218,7 @@
             // codePostalTextBox
             // 
             this.codePostalTextBox.Location = new System.Drawing.Point(108, 204);
+            this.codePostalTextBox.MaxLength = 6;
             this.codePostalTextBox.Name = "codePostalTextBox";
             this.codePostalTextBox.Size = new System.Drawing.Size(200, 20);
             this.codePostalTextBox.TabIndex = 5;

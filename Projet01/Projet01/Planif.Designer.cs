@@ -137,7 +137,7 @@
             this.p01_AssistantComboBox.DisplayMember = "Prenom";
             this.p01_AssistantComboBox.FormattingEnabled = true;
             this.p01_AssistantComboBox.Location = new System.Drawing.Point(122, 172);
-            this.p01_AssistantComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p01_AssistantComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.p01_AssistantComboBox.Name = "p01_AssistantComboBox";
             this.p01_AssistantComboBox.Size = new System.Drawing.Size(133, 21);
             this.p01_AssistantComboBox.TabIndex = 4;
@@ -146,7 +146,7 @@
             // btn_ajouter
             // 
             this.btn_ajouter.Location = new System.Drawing.Point(106, 242);
-            this.btn_ajouter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ajouter.Name = "btn_ajouter";
             this.btn_ajouter.Size = new System.Drawing.Size(68, 48);
             this.btn_ajouter.TabIndex = 5;
@@ -157,7 +157,7 @@
             // btn_Annuler
             // 
             this.btn_Annuler.Location = new System.Drawing.Point(218, 242);
-            this.btn_Annuler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Annuler.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Annuler.Name = "btn_Annuler";
             this.btn_Annuler.Size = new System.Drawing.Size(68, 48);
             this.btn_Annuler.TabIndex = 6;
@@ -180,7 +180,7 @@
             this.CbPersonnes.DisplayMember = "No_Nom_Client";
             this.CbPersonnes.FormattingEnabled = true;
             this.CbPersonnes.Location = new System.Drawing.Point(122, 131);
-            this.CbPersonnes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CbPersonnes.Margin = new System.Windows.Forms.Padding(2);
             this.CbPersonnes.Name = "CbPersonnes";
             this.CbPersonnes.Size = new System.Drawing.Size(133, 21);
             this.CbPersonnes.TabIndex = 7;
@@ -191,9 +191,9 @@
             this.gbPersonne.Controls.Add(this.rbInvite);
             this.gbPersonne.Controls.Add(this.rbClient);
             this.gbPersonne.Location = new System.Drawing.Point(122, 73);
-            this.gbPersonne.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbPersonne.Margin = new System.Windows.Forms.Padding(2);
             this.gbPersonne.Name = "gbPersonne";
-            this.gbPersonne.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbPersonne.Padding = new System.Windows.Forms.Padding(2);
             this.gbPersonne.Size = new System.Drawing.Size(132, 53);
             this.gbPersonne.TabIndex = 8;
             this.gbPersonne.TabStop = false;
@@ -202,7 +202,7 @@
             // 
             this.rbInvite.AutoSize = true;
             this.rbInvite.Location = new System.Drawing.Point(4, 30);
-            this.rbInvite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbInvite.Margin = new System.Windows.Forms.Padding(2);
             this.rbInvite.Name = "rbInvite";
             this.rbInvite.Size = new System.Drawing.Size(51, 17);
             this.rbInvite.TabIndex = 1;
@@ -215,7 +215,7 @@
             // 
             this.rbClient.AutoSize = true;
             this.rbClient.Location = new System.Drawing.Point(4, 8);
-            this.rbClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbClient.Margin = new System.Windows.Forms.Padding(2);
             this.rbClient.Name = "rbClient";
             this.rbClient.Size = new System.Drawing.Size(51, 17);
             this.rbClient.TabIndex = 0;
@@ -236,7 +236,7 @@
             // tbSoin
             // 
             this.tbSoin.Location = new System.Drawing.Point(122, 49);
-            this.tbSoin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSoin.Margin = new System.Windows.Forms.Padding(2);
             this.tbSoin.Name = "tbSoin";
             this.tbSoin.ReadOnly = true;
             this.tbSoin.Size = new System.Drawing.Size(133, 20);
@@ -246,10 +246,10 @@
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datePicker.Location = new System.Drawing.Point(122, 208);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(2);
             this.datePicker.Name = "datePicker";
             this.datePicker.ShowUpDown = true;
-            this.datePicker.Size = new System.Drawing.Size(194, 20);
+            this.datePicker.Size = new System.Drawing.Size(101, 20);
             this.datePicker.TabIndex = 10;
             // 
             // lblDate
@@ -265,12 +265,11 @@
             // TimePicker
             // 
             this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TimePicker.Location = new System.Drawing.Point(301, 254);
-            this.TimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TimePicker.Location = new System.Drawing.Point(227, 208);
+            this.TimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.TimePicker.Name = "TimePicker";
             this.TimePicker.Size = new System.Drawing.Size(86, 20);
             this.TimePicker.TabIndex = 12;
-            this.TimePicker.ValueChanged += new System.EventHandler(this.TimePicker_ValueChanged);
             // 
             // Planif
             // 
@@ -289,7 +288,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Planif";
             this.Text = "Ajout d\'une planification de soin";
             this.Load += new System.EventHandler(this.Planif_Load);

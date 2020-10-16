@@ -25,6 +25,8 @@ namespace Projet01
         
         private void frmChambre_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_TypeChambre' table. You can move, or remove it, as needed.
+            this.p01_TypeChambreTableAdapter.Fill(this.bDB56AnkitDataSet.P01_TypeChambre);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Chambre' table. You can move, or remove it, as needed.
             this.p01_ChambreTableAdapter.Fill(this.bDB56AnkitDataSet.P01_Chambre);
 
@@ -69,7 +71,7 @@ namespace Projet01
                     {
                         emplacementTextBox.Text = dr[1].ToString();
                         decorationsTextBox.Text = dr[2].ToString();
-                        noTypeChambreTextBox.Text = dr[3].ToString();
+                        cboTypeChambre.SelectedValue = dr[3].ToString();
                     }
 
                     con.Close();
@@ -114,7 +116,7 @@ namespace Projet01
                     uneChambre.NoChambre = (short)(NoChambre);
                     uneChambre.Emplacement = emplacementTextBox.Text;
                     uneChambre.Decorations = decorationsTextBox.Text;
-                    uneChambre.NoTypeChambre = (short)int.Parse(noTypeChambreTextBox.Text);
+                    uneChambre.NoTypeChambre = (short)int.Parse(cboTypeChambre.SelectedValue.ToString());
 
                     // Ajout dans BD
                     bDB56AnkitDataSet.P01_Chambre.AddP01_ChambreRow(uneChambre);
@@ -129,7 +131,7 @@ namespace Projet01
                     {
                         con.Open();
                         string requete = "UPDATE P01_Chambres SET Emplacement = '" + emplacementTextBox.Text + "', Decorations = '" + decorationsTextBox.Text
-                                            + "', NoTypeChambre = " + noTypeChambreTextBox.Text + " WHERE NoChambre = " + NoChambre;
+                                            + "', NoTypeChambre = " + cboTypeChambre.SelectedValue.ToString() + " WHERE NoChambre = " + NoChambre;
                         SqlCommand comm = new SqlCommand(requete, con);
                         comm.ExecuteNonQuery();
 
@@ -144,6 +146,9 @@ namespace Projet01
             
         }
 
+        private void p01_TypeChambreComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

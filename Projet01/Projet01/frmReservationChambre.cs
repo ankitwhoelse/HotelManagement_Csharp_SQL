@@ -22,6 +22,8 @@ namespace Projet01
 
         private void frmReservationChambre_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.nosEtNomsClients' table. You can move, or remove it, as needed.
+            this.nosEtNomsClientsTableAdapter.Fill(this.bDB56AnkitDataSet.nosEtNomsClients);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_ReservationChambre' table. You can move, or remove it, as needed.
             this.p01_ReservationChambreTableAdapter.Fill(this.bDB56AnkitDataSet.P01_ReservationChambre);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Client' table. You can move, or remove it, as needed.
@@ -85,6 +87,5 @@ namespace Projet01
             }
         }
         
-
     }
 }

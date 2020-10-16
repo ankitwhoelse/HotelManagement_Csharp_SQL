@@ -31,6 +31,10 @@ namespace Projet01
 
         private void frmPrepose_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_TypeChambre' table. You can move, or remove it, as needed.
+            this.p01_TypeChambreTableAdapter.Fill(this.bDB56AnkitDataSet.P01_TypeChambre);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.nosEtNomsClients' table. You can move, or remove it, as needed.
+            this.nosEtNomsClientsTableAdapter.Fill(this.bDB56AnkitDataSet.nosEtNomsClients);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Invite' table. You can move, or remove it, as needed.
             this.p01_InviteTableAdapter.Fill(this.bDB56AnkitDataSet.P01_Invite);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Chambre' table. You can move, or remove it, as needed.
@@ -117,5 +121,25 @@ namespace Projet01
             frmResCh.ShowDialog();
             this.Show();
         }
+
+        private void nosEtNomsClientsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboClients.SelectedValue = nosEtNomsClientsComboBox.SelectedValue;
+        }
+
+        // Nom du type de chambre a l'affichage
+        private void cboChambre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(maChaineDeConnexion))
+            {
+                con.Open();
+                string requete = "SELECT NoTypeChambre FROM P01_Chambre WHERE NoChambre = " + cboChambre.SelectedValue.ToString();
+                SqlCommand comm = new SqlCommand(requete, con);
+                p01_TypeChambreComboBox.SelectedValue = comm.ExecuteScalar().ToString();
+                con.Close();
+            }
+        }
+    
+
     }
 }

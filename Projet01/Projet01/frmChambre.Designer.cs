@@ -40,16 +40,19 @@
             this.p01_ChambreTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_ChambreTableAdapter();
             this.tableAdapterManager = new Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager();
             this.lblTitre = new System.Windows.Forms.Label();
-            this.noTypeChambreTextBox = new System.Windows.Forms.TextBox();
             this.decorationsTextBox = new System.Windows.Forms.TextBox();
             this.emplacementTextBox = new System.Windows.Forms.TextBox();
             this.noChambreTextBox = new System.Windows.Forms.TextBox();
+            this.p01_TypeChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.p01_TypeChambreTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_TypeChambreTableAdapter();
+            this.cboTypeChambre = new System.Windows.Forms.ComboBox();
             noChambreLabel = new System.Windows.Forms.Label();
             emplacementLabel = new System.Windows.Forms.Label();
             decorationsLabel = new System.Windows.Forms.Label();
             noTypeChambreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ChambreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // noChambreLabel
@@ -84,9 +87,9 @@
             noTypeChambreLabel.AutoSize = true;
             noTypeChambreLabel.Location = new System.Drawing.Point(12, 127);
             noTypeChambreLabel.Name = "noTypeChambreLabel";
-            noTypeChambreLabel.Size = new System.Drawing.Size(96, 13);
+            noTypeChambreLabel.Size = new System.Drawing.Size(79, 13);
             noTypeChambreLabel.TabIndex = 25;
-            noTypeChambreLabel.Text = "No Type Chambre:";
+            noTypeChambreLabel.Text = "Type Chambre:";
             // 
             // btnAnnuler
             // 
@@ -126,6 +129,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = this.p01_ChambreTableAdapter;
@@ -150,16 +154,10 @@
             this.lblTitre.TabIndex = 27;
             this.lblTitre.Text = "label1";
             // 
-            // noTypeChambreTextBox
-            // 
-            this.noTypeChambreTextBox.Location = new System.Drawing.Point(114, 124);
-            this.noTypeChambreTextBox.Name = "noTypeChambreTextBox";
-            this.noTypeChambreTextBox.Size = new System.Drawing.Size(100, 20);
-            this.noTypeChambreTextBox.TabIndex = 2;
-            // 
             // decorationsTextBox
             // 
             this.decorationsTextBox.Location = new System.Drawing.Point(114, 98);
+            this.decorationsTextBox.MaxLength = 30;
             this.decorationsTextBox.Name = "decorationsTextBox";
             this.decorationsTextBox.Size = new System.Drawing.Size(100, 20);
             this.decorationsTextBox.TabIndex = 1;
@@ -167,6 +165,7 @@
             // emplacementTextBox
             // 
             this.emplacementTextBox.Location = new System.Drawing.Point(114, 72);
+            this.emplacementTextBox.MaxLength = 30;
             this.emplacementTextBox.Name = "emplacementTextBox";
             this.emplacementTextBox.Size = new System.Drawing.Size(100, 20);
             this.emplacementTextBox.TabIndex = 0;
@@ -179,15 +178,35 @@
             this.noChambreTextBox.Size = new System.Drawing.Size(100, 20);
             this.noChambreTextBox.TabIndex = 0;
             // 
+            // p01_TypeChambreBindingSource
+            // 
+            this.p01_TypeChambreBindingSource.DataMember = "P01_TypeChambre";
+            this.p01_TypeChambreBindingSource.DataSource = this.bDB56AnkitDataSet;
+            // 
+            // p01_TypeChambreTableAdapter
+            // 
+            this.p01_TypeChambreTableAdapter.ClearBeforeFill = true;
+            // 
+            // cboTypeChambre
+            // 
+            this.cboTypeChambre.DataSource = this.p01_TypeChambreBindingSource;
+            this.cboTypeChambre.DisplayMember = "Description";
+            this.cboTypeChambre.FormattingEnabled = true;
+            this.cboTypeChambre.Location = new System.Drawing.Point(114, 124);
+            this.cboTypeChambre.Name = "cboTypeChambre";
+            this.cboTypeChambre.Size = new System.Drawing.Size(100, 21);
+            this.cboTypeChambre.TabIndex = 27;
+            this.cboTypeChambre.ValueMember = "NoTypeChambre";
+            // 
             // frmChambre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 256);
+            this.ClientSize = new System.Drawing.Size(228, 261);
+            this.Controls.Add(this.cboTypeChambre);
             this.Controls.Add(this.noChambreTextBox);
             this.Controls.Add(this.emplacementTextBox);
             this.Controls.Add(this.decorationsTextBox);
-            this.Controls.Add(this.noTypeChambreTextBox);
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(noChambreLabel);
             this.Controls.Add(emplacementLabel);
@@ -195,11 +214,15 @@
             this.Controls.Add(noTypeChambreLabel);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnConfirmer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmChambre";
             this.Text = "frmChambre";
             this.Load += new System.EventHandler(this.frmChambre_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ChambreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,9 +237,11 @@
         private BDB56AnkitDataSetTableAdapters.P01_ChambreTableAdapter p01_ChambreTableAdapter;
         private BDB56AnkitDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Label lblTitre;
-        private System.Windows.Forms.TextBox noTypeChambreTextBox;
         private System.Windows.Forms.TextBox decorationsTextBox;
         private System.Windows.Forms.TextBox emplacementTextBox;
         private System.Windows.Forms.TextBox noChambreTextBox;
+        private System.Windows.Forms.BindingSource p01_TypeChambreBindingSource;
+        private BDB56AnkitDataSetTableAdapters.P01_TypeChambreTableAdapter p01_TypeChambreTableAdapter;
+        private System.Windows.Forms.ComboBox cboTypeChambre;
     }
 }

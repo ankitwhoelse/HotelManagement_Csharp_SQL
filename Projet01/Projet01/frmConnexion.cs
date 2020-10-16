@@ -50,6 +50,8 @@ namespace Projet01
             NoUtilisateur = maCommande.ExecuteScalar();
             NoType = maCommande2.ExecuteScalar();
 
+            maConnexion.Close();
+
             if (NoUtilisateur == null)
                 MessageBox.Show("Connexion echoue", "Connexion echoue", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else {
@@ -66,10 +68,7 @@ namespace Projet01
                     frmP.ShowDialog();
                 }
                 
-                this.Show();
             }
-            
-            maConnexion.Close();
             
         }
         

@@ -186,13 +186,13 @@
             this.p01_AssistantBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.p01_PlanifSoinBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p01_PlanifSoinTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_PlanifSoinTableAdapter();
-            this.p01_PlanifSoinComboBox = new System.Windows.Forms.ComboBox();
+            this.cboPlanifSoins = new System.Windows.Forms.ComboBox();
             this.noSoinTextBox1 = new System.Windows.Forms.TextBox();
             this.dateHeureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.noAssistantTextBox1 = new System.Windows.Forms.TextBox();
             this.noPersonneTextBox = new System.Windows.Forms.TextBox();
             this.gbPlanifSoin = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAnnulerPlanifSoin = new System.Windows.Forms.Button();
             this.gbReservation = new System.Windows.Forms.GroupBox();
             this.noClientTextBox1 = new System.Windows.Forms.TextBox();
             this.p01_ReservationChambreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -203,6 +203,9 @@
             this.cboReservation = new System.Windows.Forms.ComboBox();
             this.p01_ReservationChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p01_ReservationChambreTableAdapter1 = new Projet01.BDB56AnkitDataSetTableAdapters.P01_ReservationChambreTableAdapter();
+            this.nosEtNomsClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nosEtNomsClientsTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter();
+            this.nosEtNomsClientsComboBox = new System.Windows.Forms.ComboBox();
             noUtilisateurLabel = new System.Windows.Forms.Label();
             nomUtilisateurLabel = new System.Windows.Forms.Label();
             motDePasseLabel = new System.Windows.Forms.Label();
@@ -277,6 +280,7 @@
             this.gbReservation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // noUtilisateurLabel
@@ -704,7 +708,7 @@
             this.visualiserToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1169, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1189, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -786,6 +790,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = null;
@@ -885,11 +890,12 @@
             this.cboClients.DisplayMember = "Nom";
             this.cboClients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClients.FormattingEnabled = true;
-            this.cboClients.Location = new System.Drawing.Point(18, 112);
+            this.cboClients.Location = new System.Drawing.Point(16, 94);
             this.cboClients.Name = "cboClients";
             this.cboClients.Size = new System.Drawing.Size(156, 21);
             this.cboClients.TabIndex = 9;
             this.cboClients.ValueMember = "NoClient";
+            this.cboClients.Visible = false;
             // 
             // noUtilisateurTextBox
             // 
@@ -1061,7 +1067,7 @@
             this.cboAssistants.DisplayMember = "Nom";
             this.cboAssistants.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAssistants.FormattingEnabled = true;
-            this.cboAssistants.Location = new System.Drawing.Point(17, 112);
+            this.cboAssistants.Location = new System.Drawing.Point(22, 138);
             this.cboAssistants.Name = "cboAssistants";
             this.cboAssistants.Size = new System.Drawing.Size(156, 21);
             this.cboAssistants.TabIndex = 18;
@@ -1147,7 +1153,7 @@
             this.cboSoins.DisplayMember = "Description";
             this.cboSoins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSoins.FormattingEnabled = true;
-            this.cboSoins.Location = new System.Drawing.Point(17, 112);
+            this.cboSoins.Location = new System.Drawing.Point(18, 78);
             this.cboSoins.Name = "cboSoins";
             this.cboSoins.Size = new System.Drawing.Size(157, 21);
             this.cboSoins.TabIndex = 35;
@@ -1234,7 +1240,7 @@
             this.cboChambres.DisplayMember = "NoChambre";
             this.cboChambres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboChambres.FormattingEnabled = true;
-            this.cboChambres.Location = new System.Drawing.Point(16, 112);
+            this.cboChambres.Location = new System.Drawing.Point(15, 57);
             this.cboChambres.Name = "cboChambres";
             this.cboChambres.Size = new System.Drawing.Size(157, 21);
             this.cboChambres.TabIndex = 36;
@@ -1327,6 +1333,7 @@
             // 
             this.cboInvite.DataSource = this.p01_InviteBindingSource;
             this.cboInvite.DisplayMember = "NomPrenom";
+            this.cboInvite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboInvite.FormattingEnabled = true;
             this.cboInvite.Location = new System.Drawing.Point(9, 20);
             this.cboInvite.Name = "cboInvite";
@@ -1426,7 +1433,7 @@
             // cboTypeChambre
             // 
             this.cboTypeChambre.DataSource = this.p01_TypeChambreBindingSource;
-            this.cboTypeChambre.DisplayMember = "NoTypeChambre";
+            this.cboTypeChambre.DisplayMember = "Description";
             this.cboTypeChambre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeChambre.FormattingEnabled = true;
             this.cboTypeChambre.Location = new System.Drawing.Point(9, 19);
@@ -1713,17 +1720,17 @@
             // 
             this.p01_PlanifSoinTableAdapter.ClearBeforeFill = true;
             // 
-            // p01_PlanifSoinComboBox
+            // cboPlanifSoins
             // 
-            this.p01_PlanifSoinComboBox.DataSource = this.p01_PlanifSoinBindingSource;
-            this.p01_PlanifSoinComboBox.DisplayMember = "NoPersonne";
-            this.p01_PlanifSoinComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.p01_PlanifSoinComboBox.FormattingEnabled = true;
-            this.p01_PlanifSoinComboBox.Location = new System.Drawing.Point(6, 19);
-            this.p01_PlanifSoinComboBox.Name = "p01_PlanifSoinComboBox";
-            this.p01_PlanifSoinComboBox.Size = new System.Drawing.Size(116, 21);
-            this.p01_PlanifSoinComboBox.TabIndex = 0;
-            this.p01_PlanifSoinComboBox.ValueMember = "NoPersonne";
+            this.cboPlanifSoins.DataSource = this.p01_PlanifSoinBindingSource;
+            this.cboPlanifSoins.DisplayMember = "NoPersonne";
+            this.cboPlanifSoins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlanifSoins.FormattingEnabled = true;
+            this.cboPlanifSoins.Location = new System.Drawing.Point(6, 19);
+            this.cboPlanifSoins.Name = "cboPlanifSoins";
+            this.cboPlanifSoins.Size = new System.Drawing.Size(116, 21);
+            this.cboPlanifSoins.TabIndex = 0;
+            this.cboPlanifSoins.ValueMember = "NoPersonne";
             // 
             // noSoinTextBox1
             // 
@@ -1760,7 +1767,7 @@
             // gbPlanifSoin
             // 
             this.gbPlanifSoin.Controls.Add(noPersonneLabel);
-            this.gbPlanifSoin.Controls.Add(this.button2);
+            this.gbPlanifSoin.Controls.Add(this.btnAnnulerPlanifSoin);
             this.gbPlanifSoin.Controls.Add(this.noPersonneTextBox);
             this.gbPlanifSoin.Controls.Add(noAssistantLabel1);
             this.gbPlanifSoin.Controls.Add(this.noAssistantTextBox1);
@@ -1768,7 +1775,7 @@
             this.gbPlanifSoin.Controls.Add(this.dateHeureDateTimePicker);
             this.gbPlanifSoin.Controls.Add(noSoinLabel1);
             this.gbPlanifSoin.Controls.Add(this.noSoinTextBox1);
-            this.gbPlanifSoin.Controls.Add(this.p01_PlanifSoinComboBox);
+            this.gbPlanifSoin.Controls.Add(this.cboPlanifSoins);
             this.gbPlanifSoin.Location = new System.Drawing.Point(16, 452);
             this.gbPlanifSoin.Name = "gbPlanifSoin";
             this.gbPlanifSoin.Size = new System.Drawing.Size(237, 179);
@@ -1777,14 +1784,15 @@
             this.gbPlanifSoin.Text = "Plannification des soins";
             this.gbPlanifSoin.Visible = false;
             // 
-            // button2
+            // btnAnnulerPlanifSoin
             // 
-            this.button2.Location = new System.Drawing.Point(145, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 35);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "Annuler reservation";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAnnulerPlanifSoin.Location = new System.Drawing.Point(145, 19);
+            this.btnAnnulerPlanifSoin.Name = "btnAnnulerPlanifSoin";
+            this.btnAnnulerPlanifSoin.Size = new System.Drawing.Size(75, 35);
+            this.btnAnnulerPlanifSoin.TabIndex = 42;
+            this.btnAnnulerPlanifSoin.Text = "Annuler reservation";
+            this.btnAnnulerPlanifSoin.UseVisualStyleBackColor = true;
+            this.btnAnnulerPlanifSoin.Click += new System.EventHandler(this.button2_Click);
             // 
             // gbReservation
             // 
@@ -1856,6 +1864,7 @@
             // 
             this.cboReservation.DataSource = this.p01_ReservationChambreBindingSource;
             this.cboReservation.DisplayMember = "NoClient";
+            this.cboReservation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboReservation.FormattingEnabled = true;
             this.cboReservation.Location = new System.Drawing.Point(6, 20);
             this.cboReservation.Name = "cboReservation";
@@ -1872,11 +1881,34 @@
             // 
             this.p01_ReservationChambreTableAdapter1.ClearBeforeFill = true;
             // 
+            // nosEtNomsClientsBindingSource
+            // 
+            this.nosEtNomsClientsBindingSource.DataMember = "nosEtNomsClients";
+            this.nosEtNomsClientsBindingSource.DataSource = this.bDB56AnkitDataSet;
+            // 
+            // nosEtNomsClientsTableAdapter
+            // 
+            this.nosEtNomsClientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // nosEtNomsClientsComboBox
+            // 
+            this.nosEtNomsClientsComboBox.DataSource = this.nosEtNomsClientsBindingSource;
+            this.nosEtNomsClientsComboBox.DisplayMember = "NomComplet";
+            this.nosEtNomsClientsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nosEtNomsClientsComboBox.FormattingEnabled = true;
+            this.nosEtNomsClientsComboBox.Location = new System.Drawing.Point(393, 33);
+            this.nosEtNomsClientsComboBox.Name = "nosEtNomsClientsComboBox";
+            this.nosEtNomsClientsComboBox.Size = new System.Drawing.Size(153, 21);
+            this.nosEtNomsClientsComboBox.TabIndex = 43;
+            this.nosEtNomsClientsComboBox.ValueMember = "NoClient";
+            this.nosEtNomsClientsComboBox.SelectionChangeCommitted += new System.EventHandler(this.nosEtNomsClientsComboBox_SelectedIndexChanged);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 734);
+            this.ClientSize = new System.Drawing.Size(1189, 738);
+            this.Controls.Add(this.nosEtNomsClientsComboBox);
             this.Controls.Add(this.gbReservation);
             this.Controls.Add(this.gbPlanifSoin);
             this.Controls.Add(this.gbInfoTypeSoin);
@@ -1951,6 +1983,7 @@
             this.gbReservation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ReservationChambreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2071,13 +2104,13 @@
         private System.Windows.Forms.BindingSource p01_PlanifSoinBindingSource;
         private BDB56AnkitDataSetTableAdapters.P01_PlanifSoinTableAdapter p01_PlanifSoinTableAdapter;
         private System.Windows.Forms.Button btnAjoutPlanifSoin;
-        private System.Windows.Forms.ComboBox p01_PlanifSoinComboBox;
+        private System.Windows.Forms.ComboBox cboPlanifSoins;
         private System.Windows.Forms.TextBox noSoinTextBox1;
         private System.Windows.Forms.DateTimePicker dateHeureDateTimePicker;
         private System.Windows.Forms.TextBox noAssistantTextBox1;
         private System.Windows.Forms.TextBox noPersonneTextBox;
         private System.Windows.Forms.GroupBox gbPlanifSoin;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAnnulerPlanifSoin;
         private System.Windows.Forms.GroupBox gbReservation;
         private BDB56AnkitDataSetTableAdapters.P01_ReservationChambreTableAdapter p01_ReservationChambreTableAdapter;
         private System.Windows.Forms.BindingSource p01_ReservationChambreBindingSource;
@@ -2089,5 +2122,8 @@
         private System.Windows.Forms.DateTimePicker dateDepartDateTimePicker;
         private System.Windows.Forms.TextBox nbPersonnesTextBox;
         private System.Windows.Forms.ComboBox cboReservation;
+        private System.Windows.Forms.BindingSource nosEtNomsClientsBindingSource;
+        private BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter nosEtNomsClientsTableAdapter;
+        private System.Windows.Forms.ComboBox nosEtNomsClientsComboBox;
     }
 }

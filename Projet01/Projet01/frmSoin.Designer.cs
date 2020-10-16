@@ -44,8 +44,10 @@
             this.noSoinTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.dureeTextBox = new System.Windows.Forms.TextBox();
-            this.noTypeSoinTextBox = new System.Windows.Forms.TextBox();
             this.prixTextBox = new System.Windows.Forms.TextBox();
+            this.p01_TypeSoinBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.p01_TypeSoinTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_TypeSoinTableAdapter();
+            this.cboTypeSoin = new System.Windows.Forms.ComboBox();
             noSoinLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             dureeLabel = new System.Windows.Forms.Label();
@@ -53,6 +55,7 @@
             prixLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_SoinBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeSoinBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // noSoinLabel
@@ -87,9 +90,9 @@
             noTypeSoinLabel.AutoSize = true;
             noTypeSoinLabel.Location = new System.Drawing.Point(12, 129);
             noTypeSoinLabel.Name = "noTypeSoinLabel";
-            noTypeSoinLabel.Size = new System.Drawing.Size(75, 13);
+            noTypeSoinLabel.Size = new System.Drawing.Size(58, 13);
             noTypeSoinLabel.TabIndex = 6;
-            noTypeSoinLabel.Text = "No Type Soin:";
+            noTypeSoinLabel.Text = "Type Soin:";
             // 
             // prixLabel
             // 
@@ -117,6 +120,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = null;
@@ -172,6 +176,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.Location = new System.Drawing.Point(129, 74);
+            this.descriptionTextBox.MaxLength = 30;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(100, 20);
             this.descriptionTextBox.TabIndex = 0;
@@ -183,13 +188,6 @@
             this.dureeTextBox.Size = new System.Drawing.Size(100, 20);
             this.dureeTextBox.TabIndex = 1;
             // 
-            // noTypeSoinTextBox
-            // 
-            this.noTypeSoinTextBox.Location = new System.Drawing.Point(129, 126);
-            this.noTypeSoinTextBox.Name = "noTypeSoinTextBox";
-            this.noTypeSoinTextBox.Size = new System.Drawing.Size(100, 20);
-            this.noTypeSoinTextBox.TabIndex = 2;
-            // 
             // prixTextBox
             // 
             this.prixTextBox.Location = new System.Drawing.Point(129, 152);
@@ -197,13 +195,34 @@
             this.prixTextBox.Size = new System.Drawing.Size(100, 20);
             this.prixTextBox.TabIndex = 3;
             // 
+            // p01_TypeSoinBindingSource
+            // 
+            this.p01_TypeSoinBindingSource.DataMember = "P01_TypeSoin";
+            this.p01_TypeSoinBindingSource.DataSource = this.bDB56AnkitDataSet;
+            // 
+            // p01_TypeSoinTableAdapter
+            // 
+            this.p01_TypeSoinTableAdapter.ClearBeforeFill = true;
+            // 
+            // cboTypeSoin
+            // 
+            this.cboTypeSoin.DataSource = this.p01_TypeSoinBindingSource;
+            this.cboTypeSoin.DisplayMember = "Description";
+            this.cboTypeSoin.FormattingEnabled = true;
+            this.cboTypeSoin.Location = new System.Drawing.Point(129, 125);
+            this.cboTypeSoin.Name = "cboTypeSoin";
+            this.cboTypeSoin.Size = new System.Drawing.Size(100, 21);
+            this.cboTypeSoin.TabIndex = 17;
+            this.cboTypeSoin.ValueMember = "NoTypeSoin";
+            this.cboTypeSoin.SelectedIndexChanged += new System.EventHandler(this.p01_TypeSoinComboBox_SelectedIndexChanged);
+            // 
             // frmSoin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 271);
+            this.ClientSize = new System.Drawing.Size(243, 268);
+            this.Controls.Add(this.cboTypeSoin);
             this.Controls.Add(this.prixTextBox);
-            this.Controls.Add(this.noTypeSoinTextBox);
             this.Controls.Add(this.dureeTextBox);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.noSoinTextBox);
@@ -215,11 +234,15 @@
             this.Controls.Add(dureeLabel);
             this.Controls.Add(noTypeSoinLabel);
             this.Controls.Add(prixLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSoin";
             this.Text = "frmSoin";
             this.Load += new System.EventHandler(this.frmSoin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_SoinBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeSoinBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,7 +260,9 @@
         private System.Windows.Forms.TextBox noSoinTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.TextBox dureeTextBox;
-        private System.Windows.Forms.TextBox noTypeSoinTextBox;
         private System.Windows.Forms.TextBox prixTextBox;
+        private System.Windows.Forms.BindingSource p01_TypeSoinBindingSource;
+        private BDB56AnkitDataSetTableAdapters.P01_TypeSoinTableAdapter p01_TypeSoinTableAdapter;
+        private System.Windows.Forms.ComboBox cboTypeSoin;
     }
 }
