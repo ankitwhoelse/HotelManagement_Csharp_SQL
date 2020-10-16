@@ -24,14 +24,6 @@ namespace Projet01
             InitializeComponent();
         }
 
-        private void p01_InviteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.p01_InviteBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.bDB56AnkitDataSet);
-
-        }
-
         private void frmInvite_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_Invite' table. You can move, or remove it, as needed.

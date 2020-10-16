@@ -871,6 +871,202 @@ SELECT NoClient, Prenom + ' ' + Nom AS 'NomComplet' FROM P01_Client WHERE (NoCli
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rapportSoinsClientInviteTableAdapter" GeneratorDataComponentClassName="rapportSoinsClientInviteTableAdapter" Name="rapportSoinsClientInvite" UserDataComponentName="rapportSoinsClientInviteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT CAST(NoClient as varchar) +': '+ C.Prenom +' '+ c.Nom as 'NomComplet_Personne', C.NoClient as 'NoPersonne',
+Description as 'Soin', Ps.DateHeure, A.Prenom + ' ' + A.Nom as 'NomComplet_Assistant', S.prix
+FROM P01_Client C LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoClient
+LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
+
+UNION
+
+SELECT CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'NomComplet Pers', I.NoInvite as 'NoPersonne',
+Description as 'Soin', Ps.DateHeure, A.Prenom + ' ' + A.Nom as 'NomComplet Ass', S.prix
+FROM P01_INVITE I LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoInvite
+LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NomComplet_Personne" DataSetColumn="NomComplet_Personne" />
+              <Mapping SourceColumn="Soin" DataSetColumn="Soin" />
+              <Mapping SourceColumn="DateHeure" DataSetColumn="DateHeure" />
+              <Mapping SourceColumn="NomComplet_Assistant" DataSetColumn="NomComplet_Assistant" />
+              <Mapping SourceColumn="prix" DataSetColumn="prix" />
+              <Mapping SourceColumn="NoPersonne" DataSetColumn="NoPersonne" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="personnesPlanifTableAdapter" GeneratorDataComponentClassName="personnesPlanifTableAdapter" Name="personnesPlanif" UserDataComponentName="personnesPlanifTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectName="BDB56Ankit.dbo.P01_PlanifSoin" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT(NoPersonne), CAST(NoClient as varchar) +': '+ C.Prenom + ' ' + C.Nom as 'NomComplet'
+FROM P01_PlanifSoin Ps LEFT JOIN P01_Client C ON Ps.NoPersonne=C.NoClient WHERE NoClient is not null
+UNION
+SELECT DISTINCT(NoPersonne), CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'NomComplet'
+FROM P01_PlanifSoin Ps LEFT JOIN P01_Invite I ON Ps.NoPersonne=I.NoInvite WHERE NoInvite is not null</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NoPersonne" DataSetColumn="NoPersonne" />
+              <Mapping SourceColumn="NomComplet" DataSetColumn="NomComplet" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rapportSoinsAssistantTableAdapter" GeneratorDataComponentClassName="rapportSoinsAssistantTableAdapter" Name="rapportSoinsAssistant" UserDataComponentName="rapportSoinsAssistantTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT CAST(NoClient as varchar) +': '+ C.Prenom +' '+ c.Nom as 'Personne', C.NoClient as 'NoPersonne',
+Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+FROM P01_Client C LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoClient
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
+UNION
+SELECT CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'Personne', I.NoInvite as 'NoPersonne',
+Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+FROM P01_INVITE I LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoInvite
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Personne" DataSetColumn="Personne" />
+              <Mapping SourceColumn="NoPersonne" DataSetColumn="NoPersonne" />
+              <Mapping SourceColumn="Soin" DataSetColumn="Soin" />
+              <Mapping SourceColumn="NoSoin" DataSetColumn="NoSoin" />
+              <Mapping SourceColumn="DateHeure" DataSetColumn="DateHeure" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="assistantsListTableAdapter" GeneratorDataComponentClassName="assistantsListTableAdapter" Name="assistantsList" UserDataComponentName="assistantsListTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectName="BDB56Ankit.dbo.P01_Assistant" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [P01_Assistant] WHERE (([NoAssistant] = @Original_NoAssistant))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_NoAssistant" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoAssistant" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [P01_Assistant] ([NoAssistant]) VALUES (@NoAssistant);
+SELECT CAST(NoAssistant AS varchar) + ': ' + Prenom + ' ' + Nom AS 'Assistant', NoAssistant FROM P01_Assistant WHERE (NoAssistant = @NoAssistant)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@NoAssistant" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoAssistant" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT CAST(NoAssistant as varchar) +': '+ Prenom + ' ' + Nom as 'Assistant', NoAssistant
+FROM P01_Assistant</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [P01_Assistant] SET [NoAssistant] = @NoAssistant WHERE (([NoAssistant] = @Original_NoAssistant));
+SELECT CAST(NoAssistant AS varchar) + ': ' + Prenom + ' ' + Nom AS 'Assistant', NoAssistant FROM P01_Assistant WHERE (NoAssistant = @NoAssistant)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@NoAssistant" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoAssistant" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_NoAssistant" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoAssistant" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Assistant" DataSetColumn="Assistant" />
+              <Mapping SourceColumn="NoAssistant" DataSetColumn="NoAssistant" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dateSoinAssistantTableAdapter" GeneratorDataComponentClassName="dateSoinAssistantTableAdapter" Name="dateSoinAssistant" UserDataComponentName="dateSoinAssistantTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectName="BDB56Ankit.dbo.P01_PlanifSoin" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CONVERT(Date, DateHeure) AS 'Date', NoAssistant, NoSoin
+FROM            P01_PlanifSoin</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+              <Mapping SourceColumn="NoAssistant" DataSetColumn="NoAssistant" />
+              <Mapping SourceColumn="NoSoin" DataSetColumn="NoSoin" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="soinDateAssistantTableAdapter" GeneratorDataComponentClassName="soinDateAssistantTableAdapter" Name="soinDateAssistant" UserDataComponentName="soinDateAssistantTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BDB56AnkitConnectionString (Settings)" DbObjectName="BDB56Ankit.dbo.P01_Soin" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [P01_Soin] WHERE (([NoSoin] = @Original_NoSoin) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_NoSoin" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoSoin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [P01_Soin] ([NoSoin], [Description]) VALUES (@NoSoin, @Description);
+SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@NoSoin" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoSoin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT NoSoin, Description FROM P01_Soin</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [P01_Soin] SET [NoSoin] = @NoSoin, [Description] = @Description WHERE (([NoSoin] = @Original_NoSoin) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)));
+SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@NoSoin" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoSoin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_NoSoin" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="NoSoin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NoSoin" DataSetColumn="NoSoin" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1168,6 +1364,111 @@ SELECT NoClient, Prenom + ' ' + Nom AS 'NomComplet' FROM P01_Client WHERE (NoCli
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="rapportSoinsClientInvite" msprop:Generator_TableClassName="rapportSoinsClientInviteDataTable" msprop:Generator_TableVarName="tablerapportSoinsClientInvite" msprop:Generator_TablePropName="rapportSoinsClientInvite" msprop:Generator_RowDeletingName="rapportSoinsClientInviteRowDeleting" msprop:Generator_RowChangingName="rapportSoinsClientInviteRowChanging" msprop:Generator_RowEvHandlerName="rapportSoinsClientInviteRowChangeEventHandler" msprop:Generator_RowDeletedName="rapportSoinsClientInviteRowDeleted" msprop:Generator_UserTableName="rapportSoinsClientInvite" msprop:Generator_RowChangedName="rapportSoinsClientInviteRowChanged" msprop:Generator_RowEvArgName="rapportSoinsClientInviteRowChangeEvent" msprop:Generator_RowClassName="rapportSoinsClientInviteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NomComplet_Personne" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNomComplet_Personne" msprop:Generator_ColumnPropNameInRow="NomComplet_Personne" msprop:Generator_ColumnPropNameInTable="NomComplet_PersonneColumn" msprop:Generator_UserColumnName="NomComplet_Personne" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="63" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Soin" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSoin" msprop:Generator_ColumnPropNameInRow="Soin" msprop:Generator_ColumnPropNameInTable="SoinColumn" msprop:Generator_UserColumnName="Soin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateHeure" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDateHeure" msprop:Generator_ColumnPropNameInRow="DateHeure" msprop:Generator_ColumnPropNameInTable="DateHeureColumn" msprop:Generator_UserColumnName="DateHeure" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NomComplet_Assistant" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNomComplet_Assistant" msprop:Generator_ColumnPropNameInRow="NomComplet_Assistant" msprop:Generator_ColumnPropNameInTable="NomComplet_AssistantColumn" msprop:Generator_UserColumnName="NomComplet_Assistant" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="prix" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnprix" msprop:Generator_ColumnPropNameInRow="prix" msprop:Generator_ColumnPropNameInTable="prixColumn" msprop:Generator_UserColumnName="prix" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NoPersonne" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNoPersonne" msprop:Generator_ColumnPropNameInRow="NoPersonne" msprop:Generator_ColumnPropNameInTable="NoPersonneColumn" msprop:Generator_UserColumnName="NoPersonne" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="personnesPlanif" msprop:Generator_TableClassName="personnesPlanifDataTable" msprop:Generator_TableVarName="tablepersonnesPlanif" msprop:Generator_TablePropName="personnesPlanif" msprop:Generator_RowDeletingName="personnesPlanifRowDeleting" msprop:Generator_RowChangingName="personnesPlanifRowChanging" msprop:Generator_RowEvHandlerName="personnesPlanifRowChangeEventHandler" msprop:Generator_RowDeletedName="personnesPlanifRowDeleted" msprop:Generator_UserTableName="personnesPlanif" msprop:Generator_RowChangedName="personnesPlanifRowChanged" msprop:Generator_RowEvArgName="personnesPlanifRowChangeEvent" msprop:Generator_RowClassName="personnesPlanifRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NoPersonne" msprop:Generator_ColumnVarNameInTable="columnNoPersonne" msprop:Generator_ColumnPropNameInRow="NoPersonne" msprop:Generator_ColumnPropNameInTable="NoPersonneColumn" msprop:Generator_UserColumnName="NoPersonne" type="xs:short" minOccurs="0" />
+              <xs:element name="NomComplet" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNomComplet" msprop:Generator_ColumnPropNameInRow="NomComplet" msprop:Generator_ColumnPropNameInTable="NomCompletColumn" msprop:Generator_UserColumnName="NomComplet" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="63" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="totalSolde" msdata:ReadOnly="true" msdata:Expression="SUM(Child(fk_pers).prix)" msdata:Caption="Total des soins" msprop:Generator_ColumnVarNameInTable="columntotalSolde" msprop:Generator_ColumnPropNameInRow="totalSolde" msprop:Generator_ColumnPropNameInTable="totalSoldeColumn" msprop:Generator_UserColumnName="totalSolde" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rapportSoinsAssistant" msprop:Generator_TableClassName="rapportSoinsAssistantDataTable" msprop:Generator_TableVarName="tablerapportSoinsAssistant" msprop:Generator_TablePropName="rapportSoinsAssistant" msprop:Generator_RowDeletingName="rapportSoinsAssistantRowDeleting" msprop:Generator_RowChangingName="rapportSoinsAssistantRowChanging" msprop:Generator_RowEvHandlerName="rapportSoinsAssistantRowChangeEventHandler" msprop:Generator_RowDeletedName="rapportSoinsAssistantRowDeleted" msprop:Generator_UserTableName="rapportSoinsAssistant" msprop:Generator_RowChangedName="rapportSoinsAssistantRowChanged" msprop:Generator_RowEvArgName="rapportSoinsAssistantRowChangeEvent" msprop:Generator_RowClassName="rapportSoinsAssistantRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Personne" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPersonne" msprop:Generator_ColumnPropNameInRow="Personne" msprop:Generator_ColumnPropNameInTable="PersonneColumn" msprop:Generator_UserColumnName="Personne" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="63" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoPersonne" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNoPersonne" msprop:Generator_ColumnPropNameInRow="NoPersonne" msprop:Generator_ColumnPropNameInTable="NoPersonneColumn" msprop:Generator_UserColumnName="NoPersonne" type="xs:short" minOccurs="0" />
+              <xs:element name="Soin" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSoin" msprop:Generator_ColumnPropNameInRow="Soin" msprop:Generator_ColumnPropNameInTable="SoinColumn" msprop:Generator_UserColumnName="Soin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoSoin" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNoSoin" msprop:Generator_ColumnPropNameInRow="NoSoin" msprop:Generator_ColumnPropNameInTable="NoSoinColumn" msprop:Generator_UserColumnName="NoSoin" type="xs:short" minOccurs="0" />
+              <xs:element name="DateHeure" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDateHeure" msprop:Generator_ColumnPropNameInRow="DateHeure" msprop:Generator_ColumnPropNameInTable="DateHeureColumn" msprop:Generator_UserColumnName="DateHeure" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="assistantsList" msprop:Generator_TableClassName="assistantsListDataTable" msprop:Generator_TableVarName="tableassistantsList" msprop:Generator_TablePropName="assistantsList" msprop:Generator_RowDeletingName="assistantsListRowDeleting" msprop:Generator_RowChangingName="assistantsListRowChanging" msprop:Generator_RowEvHandlerName="assistantsListRowChangeEventHandler" msprop:Generator_RowDeletedName="assistantsListRowDeleted" msprop:Generator_UserTableName="assistantsList" msprop:Generator_RowChangedName="assistantsListRowChanged" msprop:Generator_RowEvArgName="assistantsListRowChangeEvent" msprop:Generator_RowClassName="assistantsListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Assistant" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAssistant" msprop:Generator_ColumnPropNameInRow="Assistant" msprop:Generator_ColumnPropNameInTable="AssistantColumn" msprop:Generator_UserColumnName="Assistant" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="63" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoAssistant" msprop:Generator_ColumnVarNameInTable="columnNoAssistant" msprop:Generator_ColumnPropNameInRow="NoAssistant" msprop:Generator_ColumnPropNameInTable="NoAssistantColumn" msprop:Generator_UserColumnName="NoAssistant" type="xs:short" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dateSoinAssistant" msprop:Generator_TableClassName="dateSoinAssistantDataTable" msprop:Generator_TableVarName="tabledateSoinAssistant" msprop:Generator_TablePropName="dateSoinAssistant" msprop:Generator_RowDeletingName="dateSoinAssistantRowDeleting" msprop:Generator_RowChangingName="dateSoinAssistantRowChanging" msprop:Generator_RowEvHandlerName="dateSoinAssistantRowChangeEventHandler" msprop:Generator_RowDeletedName="dateSoinAssistantRowDeleted" msprop:Generator_UserTableName="dateSoinAssistant" msprop:Generator_RowChangedName="dateSoinAssistantRowChanged" msprop:Generator_RowEvArgName="dateSoinAssistantRowChangeEvent" msprop:Generator_RowClassName="dateSoinAssistantRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NoAssistant" msprop:Generator_ColumnVarNameInTable="columnNoAssistant" msprop:Generator_ColumnPropNameInRow="NoAssistant" msprop:Generator_ColumnPropNameInTable="NoAssistantColumn" msprop:Generator_UserColumnName="NoAssistant" type="xs:short" />
+              <xs:element name="NoSoin" msprop:Generator_ColumnVarNameInTable="columnNoSoin" msprop:Generator_ColumnPropNameInRow="NoSoin" msprop:Generator_ColumnPropNameInTable="NoSoinColumn" msprop:Generator_UserColumnName="NoSoin" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="soinDateAssistant" msprop:Generator_TableClassName="soinDateAssistantDataTable" msprop:Generator_TableVarName="tablesoinDateAssistant" msprop:Generator_TablePropName="soinDateAssistant" msprop:Generator_RowDeletingName="soinDateAssistantRowDeleting" msprop:Generator_RowChangingName="soinDateAssistantRowChanging" msprop:Generator_RowEvHandlerName="soinDateAssistantRowChangeEventHandler" msprop:Generator_RowDeletedName="soinDateAssistantRowDeleted" msprop:Generator_UserTableName="soinDateAssistant" msprop:Generator_RowChangedName="soinDateAssistantRowChanged" msprop:Generator_RowEvArgName="soinDateAssistantRowChangeEvent" msprop:Generator_RowClassName="soinDateAssistantRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NoSoin" msprop:Generator_ColumnVarNameInTable="columnNoSoin" msprop:Generator_ColumnPropNameInRow="NoSoin" msprop:Generator_ColumnPropNameInTable="NoSoinColumn" msprop:Generator_UserColumnName="NoSoin" type="xs:short" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1227,6 +1528,14 @@ SELECT NoClient, Prenom + ' ' + Nom AS 'NomComplet' FROM P01_Client WHERE (NoCli
       <xs:selector xpath=".//mstns:nosEtNomsClients" />
       <xs:field xpath="mstns:NoClient" />
     </xs:unique>
+    <xs:unique name="assistantsList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:assistantsList" />
+      <xs:field xpath="mstns:NoAssistant" />
+    </xs:unique>
+    <xs:unique name="soinDateAssistant_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:soinDateAssistant" />
+      <xs:field xpath="mstns:NoSoin" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -1243,6 +1552,10 @@ SELECT NoClient, Prenom + ' ' + Nom AS 'NomComplet' FROM P01_Client WHERE (NoCli
       <msdata:Relationship name="fk_RC_Client" msdata:parent="P01_Client" msdata:child="P01_ReservationChambre" msdata:parentkey="NoClient" msdata:childkey="NoClient" msprop:Generator_UserChildTable="P01_ReservationChambre" msprop:Generator_ChildPropName="GetP01_ReservationChambreRows" msprop:Generator_UserRelationName="fk_RC_Client" msprop:Generator_RelationVarName="relationfk_RC_Client" msprop:Generator_UserParentTable="P01_Client" msprop:Generator_ParentPropName="P01_ClientRow" />
       <msdata:Relationship name="fk_INV_client1" msdata:parent="nosEtNomsClients" msdata:child="P01_Invite" msdata:parentkey="NoClient" msdata:childkey="NoClient" msprop:Generator_UserChildTable="P01_Invite" msprop:Generator_ChildPropName="GetP01_InviteRows" msprop:Generator_UserRelationName="fk_INV_client1" msprop:Generator_RelationVarName="relationfk_INV_client1" msprop:Generator_UserParentTable="nosEtNomsClients" msprop:Generator_ParentPropName="nosEtNomsClientsRow" />
       <msdata:Relationship name="fk_RC_Client1" msdata:parent="nosEtNomsClients" msdata:child="P01_ReservationChambre" msdata:parentkey="NoClient" msdata:childkey="NoClient" msprop:Generator_UserChildTable="P01_ReservationChambre" msprop:Generator_ChildPropName="GetP01_ReservationChambreRows" msprop:Generator_UserRelationName="fk_RC_Client1" msprop:Generator_RelationVarName="relationfk_RC_Client1" msprop:Generator_UserParentTable="nosEtNomsClients" msprop:Generator_ParentPropName="nosEtNomsClientsRow" />
+      <msdata:Relationship name="fk_pers" msdata:parent="personnesPlanif" msdata:child="rapportSoinsClientInvite" msdata:parentkey="NoPersonne" msdata:childkey="NoPersonne" msprop:Generator_UserChildTable="rapportSoinsClientInvite" msprop:Generator_ChildPropName="GetrapportSoinsClientInviteRows" msprop:Generator_UserRelationName="fk_pers" msprop:Generator_RelationVarName="relationfk_pers" msprop:Generator_UserParentTable="personnesPlanif" msprop:Generator_ParentPropName="personnesPlanifRow" />
+      <msdata:Relationship name="fk_NoAssistantPlanif4" msdata:parent="assistantsList" msdata:child="dateSoinAssistant" msdata:parentkey="NoAssistant" msdata:childkey="NoAssistant" msprop:Generator_UserChildTable="dateSoinAssistant" msprop:Generator_ChildPropName="GetdateSoinAssistantRows" msprop:Generator_UserRelationName="fk_NoAssistantPlanif4" msprop:Generator_ParentPropName="assistantsListRow" msprop:Generator_RelationVarName="relationfk_NoAssistantPlanif4" msprop:Generator_UserParentTable="assistantsList" />
+      <msdata:Relationship name="fk_NoSoinPlanif4" msdata:parent="dateSoinAssistant" msdata:child="soinDateAssistant" msdata:parentkey="NoSoin" msdata:childkey="NoSoin" msprop:Generator_UserChildTable="soinDateAssistant" msprop:Generator_ChildPropName="GetsoinDateAssistantRows" msprop:Generator_UserRelationName="fk_NoSoinPlanif4" msprop:Generator_ParentPropName="dateSoinAssistantRow" msprop:Generator_RelationVarName="relationfk_NoSoinPlanif4" msprop:Generator_UserParentTable="dateSoinAssistant" />
+      <msdata:Relationship name="soinDateAssistant_rapportSoinsAssistant" msdata:parent="soinDateAssistant" msdata:child="rapportSoinsAssistant" msdata:parentkey="NoSoin" msdata:childkey="NoSoin" msprop:Generator_UserChildTable="rapportSoinsAssistant" msprop:Generator_ChildPropName="GetrapportSoinsAssistantRows" msprop:Generator_UserRelationName="soinDateAssistant_rapportSoinsAssistant" msprop:Generator_RelationVarName="relationsoinDateAssistant_rapportSoinsAssistant" msprop:Generator_UserParentTable="soinDateAssistant" msprop:Generator_ParentPropName="soinDateAssistantRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

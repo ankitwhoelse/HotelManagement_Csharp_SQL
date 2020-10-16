@@ -21,8 +21,9 @@ namespace Projet01
         public dynamic NoTypeSoin;
         public dynamic NoChambre;
         public dynamic NoTypeChambre;
-
+        
         private int choixMenu;
+        private int noRapport;
         private bool booAjout;
 
         frmUtilisateur frmU = new frmUtilisateur();
@@ -34,6 +35,7 @@ namespace Projet01
         frmChambre frmCh = new frmChambre();
         frmReservationChambre frmResCh = new frmReservationChambre();
         frmTypeChambre frmTyCh = new frmTypeChambre();
+        frmRapport frmRap = new frmRapport();
 
         String maChaineDeConnexion = "Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Ankit;Persist Security Info=True;User ID=B56Ankit;Password=Summit11g";
 
@@ -46,6 +48,16 @@ namespace Projet01
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
+            bDB56AnkitDataSet.P01_Utilisateur.WriteXml("utilisateur.xml");
+            bDB56AnkitDataSet.P01_Client.WriteXml("client.xml");
+            bDB56AnkitDataSet.P01_Invite.WriteXml("invite.xml");
+            bDB56AnkitDataSet.P01_Assistant.WriteXml("assistant.xml");
+            bDB56AnkitDataSet.P01_AssistantSoin.WriteXml("assistantSoin.xml");
+            bDB56AnkitDataSet.P01_Soin.WriteXml("soin.xml");
+            bDB56AnkitDataSet.P01_PlanifSoin.WriteXml("planificationSoin.xml");
+            bDB56AnkitDataSet.P01_Chambre.WriteXml("chambre.xml");
+            bDB56AnkitDataSet.P01_TypeChambre.WriteXml("typeChambre.xml");
+            bDB56AnkitDataSet.P01_ReservationChambre.WriteXml("reservationChambre.xml");
         }
 
         private void btnDeconnexion_Click(object sender, EventArgs e)
@@ -127,7 +139,7 @@ namespace Projet01
                 default:    MessageBox.Show("this aint right", "bug ajout");
                     break;
             }
-            
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
         
@@ -176,6 +188,7 @@ namespace Projet01
                     MessageBox.Show("this aint right", "bug modif");
                     break;
             }
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -210,6 +223,7 @@ namespace Projet01
                             MessageBox.Show("L'utilisateur a été supprimé.", "Utilisateur supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.p01_UtilisateurBindingSource.EndEdit();
                             this.p01_UtilisateurTableAdapter.Update(this.bDB56AnkitDataSet.P01_Utilisateur);
+                            this.frmAdmin_Load(this, e);
                             con.Close();
                         }
                     }
@@ -243,6 +257,7 @@ namespace Projet01
                             MessageBox.Show("Le client a été supprimé.", "Client supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.p01_ClientBindingSource.EndEdit();
                             this.p01_ClientTableAdapter.Update(this.bDB56AnkitDataSet.P01_Client);
+                            this.frmAdmin_Load(this, e);
                         }
 
                         con.Close();
@@ -276,6 +291,7 @@ namespace Projet01
                             MessageBox.Show("L'assistant a été supprimé.", "Assistant supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.p01_AssistantBindingSource.EndEdit();
                             this.p01_AssistantTableAdapter.Update(this.bDB56AnkitDataSet.P01_Assistant);
+                            this.frmAdmin_Load(this, e);
                         }
                         con.Close();
                     }
@@ -309,6 +325,7 @@ namespace Projet01
                             MessageBox.Show("Le soin a été supprimé.", "Soin supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.p01_SoinBindingSource.EndEdit();
                             this.p01_SoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_Soin);
+                            this.frmAdmin_Load(this, e);
                         }
                         con.Close();
                     }
@@ -341,6 +358,7 @@ namespace Projet01
                             MessageBox.Show("La chambre a été supprimée.", "Chambre supprimée", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.p01_ChambreBindingSource.EndEdit();
                             this.p01_ChambreTableAdapter.Update(this.bDB56AnkitDataSet.P01_Chambre);
+                            this.frmAdmin_Load(this, e);
                         }
                         con.Close();
                     }
@@ -381,7 +399,7 @@ namespace Projet01
             choixMenu = 2;
             lblChoix.Text = "Gestion des clients et leurs invites";
             lblSelection.Text = "Veuillez selectionnez \nun utilisateur:";
-            cboClients.Visible = true;
+            cboClients.Visible = false;
             gbInfoClient.Visible = true;
             gbInfoInvite.Visible = true;
             nosEtNomsClientsComboBox.Visible = true;
@@ -484,6 +502,7 @@ namespace Projet01
             frmI.booAjout = true;
             this.Hide();
             frmI.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -497,6 +516,7 @@ namespace Projet01
             frmI.NoInvite = NoInvite;
             this.Hide();
             frmI.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -529,6 +549,7 @@ namespace Projet01
                     MessageBox.Show("L'invité a été supprimé.", "Invité supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.p01_InviteBindingSource.EndEdit();
                     this.p01_InviteTableAdapter.Update(this.bDB56AnkitDataSet.P01_Invite);
+                    this.frmAdmin_Load(this, e);
                 }
                 con.Close();
             }
@@ -540,6 +561,7 @@ namespace Projet01
             frmTyCh.booAjout = true;
             this.Hide();
             frmTyCh.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -551,6 +573,7 @@ namespace Projet01
             frmTyCh.booAjout = false;
             this.Hide();
             frmTyCh.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -581,6 +604,7 @@ namespace Projet01
                     MessageBox.Show("La réservation a été anullée.", "Réservation anullée", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.p01_TypeChambreBindingSource.EndEdit();
                     this.p01_TypeChambreTableAdapter.Update(this.bDB56AnkitDataSet.P01_TypeChambre);
+                    this.frmAdmin_Load(this, e);
                 }
 
                 con.Close();
@@ -594,6 +618,7 @@ namespace Projet01
             frmResCh.NoChambre = NoChambre;
             this.Hide();
             frmResCh.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -622,7 +647,7 @@ namespace Projet01
                     MessageBox.Show("La réservation a été anullée.", "Réservation anullée", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.p01_ReservationChambreBindingSource.EndEdit();
                     this.p01_ReservationChambreTableAdapter1.Update(this.bDB56AnkitDataSet.P01_ReservationChambre);
-
+                    this.frmAdmin_Load(this, e);
                 }
                 else
                     MessageBox.Show("La réservation n'a pu etre anullé puisque le séjour a déja commencé.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -674,6 +699,7 @@ namespace Projet01
                     SqlCommand commInsert = new SqlCommand(requete2, con);
                     commInsert.ExecuteScalar();
                     MessageBox.Show("Le soin a été ajouté pour cet assistant.", "Nouveau soin enregistré", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.frmAdmin_Load(this, e);
                 }
                 else
                 {   // Possede deja le soin
@@ -708,6 +734,7 @@ namespace Projet01
                     SqlCommand commInsert = new SqlCommand(requete2, con);
                     commInsert.ExecuteScalar();
                     MessageBox.Show("Le soin a été retiré pour cet assistant.", "Soin retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.frmAdmin_Load(this, e);
                 }
 
                 con.Close();
@@ -720,6 +747,7 @@ namespace Projet01
             frmTyS.booAjout = true;
             this.Hide();
             frmTyS.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -731,6 +759,7 @@ namespace Projet01
             frmTyS.booAjout = false;
             this.Hide();
             frmTyS.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -762,6 +791,7 @@ namespace Projet01
                     MessageBox.Show("Le type de soin a été retiré.", "Soin retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.p01_TypeSoinBindingSource.EndEdit();
                     this.p01_TypeSoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_TypeSoin);
+                    this.frmAdmin_Load(this, e);
                 }
                 
                 con.Close();
@@ -776,6 +806,7 @@ namespace Projet01
             planif.NomSoin = descriptionTextBox.Text.ToString();
             this.Hide();
             planif.ShowDialog();
+            this.frmAdmin_Load(this, e);
             this.Show();
         }
 
@@ -806,14 +837,39 @@ namespace Projet01
 
                     comm.ExecuteNonQuery();
                     MessageBox.Show("La planification du soin a été retiré.", "Rendez-vous retiré", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.p01_PlanifSoinBindingSource.EndEdit();
-                    this.p01_PlanifSoinTableAdapter.Update(this.bDB56AnkitDataSet.P01_PlanifSoin);
 
                     this.frmAdmin_Load(this, e);
                 }
                 
                 con.Close();
             }
+        }
+
+        //  Rapport des réservations de chambres
+        private void rapportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRap.NoRapport = 1;
+            this.Hide();
+            frmRap.ShowDialog();
+            this.Show();
+        }
+
+        //  Rapport des réservations de chambres
+        private void rapportDesReservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRap.NoRapport = 2;
+            this.Hide();
+            frmRap.ShowDialog();
+            this.Show();
+
+        }
+        //  Rapport des soins journaliers des assistants
+        private void rapportDesSoinsJournaliersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRap.NoRapport = 3;
+            this.Hide();
+            frmRap.ShowDialog();
+            this.Show();
         }
         
     }

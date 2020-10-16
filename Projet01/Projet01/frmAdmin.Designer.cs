@@ -206,6 +206,8 @@
             this.nosEtNomsClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nosEtNomsClientsTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter();
             this.nosEtNomsClientsComboBox = new System.Windows.Forms.ComboBox();
+            this.rapportDesReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rapportDesSoinsJournaliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             noUtilisateurLabel = new System.Windows.Forms.Label();
             nomUtilisateurLabel = new System.Windows.Forms.Label();
             motDePasseLabel = new System.Windows.Forms.Label();
@@ -708,7 +710,7 @@
             this.visualiserToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1189, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1074, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -762,7 +764,9 @@
             // visualiserToolStripMenuItem
             // 
             this.visualiserToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rapportsToolStripMenuItem});
+            this.rapportsToolStripMenuItem,
+            this.rapportDesReservationsToolStripMenuItem,
+            this.rapportDesSoinsJournaliersToolStripMenuItem});
             this.visualiserToolStripMenuItem.Name = "visualiserToolStripMenuItem";
             this.visualiserToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.visualiserToolStripMenuItem.Text = "Visualiser";
@@ -770,8 +774,9 @@
             // rapportsToolStripMenuItem
             // 
             this.rapportsToolStripMenuItem.Name = "rapportsToolStripMenuItem";
-            this.rapportsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.rapportsToolStripMenuItem.Text = "Rapports";
+            this.rapportsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rapportsToolStripMenuItem.Text = "Rapport des soins offerts";
+            this.rapportsToolStripMenuItem.Click += new System.EventHandler(this.rapportsToolStripMenuItem_Click);
             // 
             // bDB56AnkitDataSet
             // 
@@ -829,7 +834,7 @@
             this.cboUtilisateurs.DisplayMember = "NomUtilisateur";
             this.cboUtilisateurs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUtilisateurs.FormattingEnabled = true;
-            this.cboUtilisateurs.Location = new System.Drawing.Point(17, 112);
+            this.cboUtilisateurs.Location = new System.Drawing.Point(14, 120);
             this.cboUtilisateurs.Name = "cboUtilisateurs";
             this.cboUtilisateurs.Size = new System.Drawing.Size(156, 21);
             this.cboUtilisateurs.TabIndex = 3;
@@ -851,8 +856,9 @@
             this.lblSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelection.Location = new System.Drawing.Point(14, 79);
             this.lblSelection.Name = "lblSelection";
-            this.lblSelection.Size = new System.Drawing.Size(0, 16);
+            this.lblSelection.Size = new System.Drawing.Size(140, 48);
             this.lblSelection.TabIndex = 5;
+            this.lblSelection.Text = "texte ici qui va etre\r\nremplacer a execution\r\n\r\n";
             // 
             // btnAjouter
             // 
@@ -890,7 +896,7 @@
             this.cboClients.DisplayMember = "Nom";
             this.cboClients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClients.FormattingEnabled = true;
-            this.cboClients.Location = new System.Drawing.Point(16, 94);
+            this.cboClients.Location = new System.Drawing.Point(16, 121);
             this.cboClients.Name = "cboClients";
             this.cboClients.Size = new System.Drawing.Size(156, 21);
             this.cboClients.TabIndex = 9;
@@ -934,9 +940,9 @@
             this.gbInfoUtilisateur.Controls.Add(nomUtilisateurLabel);
             this.gbInfoUtilisateur.Controls.Add(this.motDePasseTextBox);
             this.gbInfoUtilisateur.Controls.Add(motDePasseLabel);
-            this.gbInfoUtilisateur.Location = new System.Drawing.Point(12, 325);
+            this.gbInfoUtilisateur.Location = new System.Drawing.Point(215, 69);
             this.gbInfoUtilisateur.Name = "gbInfoUtilisateur";
-            this.gbInfoUtilisateur.Size = new System.Drawing.Size(201, 119);
+            this.gbInfoUtilisateur.Size = new System.Drawing.Size(198, 123);
             this.gbInfoUtilisateur.TabIndex = 18;
             this.gbInfoUtilisateur.TabStop = false;
             this.gbInfoUtilisateur.Text = "Informations sur l\'utilisateur";
@@ -974,7 +980,7 @@
             this.gbInfoClient.Controls.Add(villeLabel);
             this.gbInfoClient.Controls.Add(this.paysTextBox);
             this.gbInfoClient.Controls.Add(paysLabel);
-            this.gbInfoClient.Location = new System.Drawing.Point(242, 52);
+            this.gbInfoClient.Location = new System.Drawing.Point(215, 69);
             this.gbInfoClient.Name = "gbInfoClient";
             this.gbInfoClient.Size = new System.Drawing.Size(304, 225);
             this.gbInfoClient.TabIndex = 34;
@@ -1067,7 +1073,7 @@
             this.cboAssistants.DisplayMember = "Nom";
             this.cboAssistants.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAssistants.FormattingEnabled = true;
-            this.cboAssistants.Location = new System.Drawing.Point(22, 138);
+            this.cboAssistants.Location = new System.Drawing.Point(17, 120);
             this.cboAssistants.Name = "cboAssistants";
             this.cboAssistants.Size = new System.Drawing.Size(156, 21);
             this.cboAssistants.TabIndex = 18;
@@ -1086,7 +1092,7 @@
             this.gbInfoAssistants.Controls.Add(nomLabel1);
             this.gbInfoAssistants.Controls.Add(specialitesLabel);
             this.gbInfoAssistants.Controls.Add(this.nomTextBox1);
-            this.gbInfoAssistants.Location = new System.Drawing.Point(345, 289);
+            this.gbInfoAssistants.Location = new System.Drawing.Point(215, 69);
             this.gbInfoAssistants.Name = "gbInfoAssistants";
             this.gbInfoAssistants.Size = new System.Drawing.Size(193, 148);
             this.gbInfoAssistants.TabIndex = 35;
@@ -1153,7 +1159,7 @@
             this.cboSoins.DisplayMember = "Description";
             this.cboSoins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSoins.FormattingEnabled = true;
-            this.cboSoins.Location = new System.Drawing.Point(18, 78);
+            this.cboSoins.Location = new System.Drawing.Point(16, 121);
             this.cboSoins.Name = "cboSoins";
             this.cboSoins.Size = new System.Drawing.Size(157, 21);
             this.cboSoins.TabIndex = 35;
@@ -1172,7 +1178,7 @@
             this.gbInfoSoins.Controls.Add(dureeLabel);
             this.gbInfoSoins.Controls.Add(noTypeSoinLabel);
             this.gbInfoSoins.Controls.Add(this.dureeTextBox);
-            this.gbInfoSoins.Location = new System.Drawing.Point(553, 236);
+            this.gbInfoSoins.Location = new System.Drawing.Point(215, 69);
             this.gbInfoSoins.Name = "gbInfoSoins";
             this.gbInfoSoins.Size = new System.Drawing.Size(204, 196);
             this.gbInfoSoins.TabIndex = 36;
@@ -1240,9 +1246,9 @@
             this.cboChambres.DisplayMember = "NoChambre";
             this.cboChambres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboChambres.FormattingEnabled = true;
-            this.cboChambres.Location = new System.Drawing.Point(15, 57);
+            this.cboChambres.Location = new System.Drawing.Point(16, 120);
             this.cboChambres.Name = "cboChambres";
-            this.cboChambres.Size = new System.Drawing.Size(157, 21);
+            this.cboChambres.Size = new System.Drawing.Size(154, 21);
             this.cboChambres.TabIndex = 36;
             this.cboChambres.ValueMember = "NoChambre";
             // 
@@ -1257,7 +1263,7 @@
             this.gbInfoChambre.Controls.Add(this.decorationsTextBox);
             this.gbInfoChambre.Controls.Add(noTypeChambreLabel);
             this.gbInfoChambre.Controls.Add(this.noTypeChambreTextBox);
-            this.gbInfoChambre.Location = new System.Drawing.Point(763, 52);
+            this.gbInfoChambre.Location = new System.Drawing.Point(215, 69);
             this.gbInfoChambre.Name = "gbInfoChambre";
             this.gbInfoChambre.Size = new System.Drawing.Size(217, 175);
             this.gbInfoChambre.TabIndex = 37;
@@ -1369,7 +1375,7 @@
             this.gbInfoInvite.Controls.Add(this.btnAjoutInvite);
             this.gbInfoInvite.Controls.Add(nomPrenomLabel);
             this.gbInfoInvite.Controls.Add(this.nomPrenomTextBox);
-            this.gbInfoInvite.Location = new System.Drawing.Point(552, 52);
+            this.gbInfoInvite.Location = new System.Drawing.Point(525, 69);
             this.gbInfoInvite.Name = "gbInfoInvite";
             this.gbInfoInvite.Size = new System.Drawing.Size(196, 175);
             this.gbInfoInvite.TabIndex = 38;
@@ -1423,7 +1429,7 @@
             this.gbInfoTypeChambre.Controls.Add(this.prixBasTextBox);
             this.gbInfoTypeChambre.Controls.Add(prixMoyenLabel);
             this.gbInfoTypeChambre.Controls.Add(this.prixMoyenTextBox);
-            this.gbInfoTypeChambre.Location = new System.Drawing.Point(763, 233);
+            this.gbInfoTypeChambre.Location = new System.Drawing.Point(500, 69);
             this.gbInfoTypeChambre.Name = "gbInfoTypeChambre";
             this.gbInfoTypeChambre.Size = new System.Drawing.Size(217, 252);
             this.gbInfoTypeChambre.TabIndex = 39;
@@ -1551,7 +1557,7 @@
             this.gbAssistantSoin.Controls.Add(this.label1);
             this.gbAssistantSoin.Controls.Add(this.btnAjouterSoin);
             this.gbAssistantSoin.Controls.Add(this.btnSupprimerSoin);
-            this.gbAssistantSoin.Location = new System.Drawing.Point(370, 444);
+            this.gbAssistantSoin.Location = new System.Drawing.Point(500, 69);
             this.gbAssistantSoin.Name = "gbAssistantSoin";
             this.gbAssistantSoin.Size = new System.Drawing.Size(168, 158);
             this.gbAssistantSoin.TabIndex = 40;
@@ -1630,7 +1636,7 @@
             this.gbInfoTypeSoin.Controls.Add(this.noTypeSoinTextBox1);
             this.gbInfoTypeSoin.Controls.Add(descriptionLabel2);
             this.gbInfoTypeSoin.Controls.Add(this.descriptionTextBox2);
-            this.gbInfoTypeSoin.Location = new System.Drawing.Point(553, 444);
+            this.gbInfoTypeSoin.Location = new System.Drawing.Point(500, 69);
             this.gbInfoTypeSoin.Name = "gbInfoTypeSoin";
             this.gbInfoTypeSoin.Size = new System.Drawing.Size(204, 158);
             this.gbInfoTypeSoin.TabIndex = 41;
@@ -1776,7 +1782,7 @@
             this.gbPlanifSoin.Controls.Add(noSoinLabel1);
             this.gbPlanifSoin.Controls.Add(this.noSoinTextBox1);
             this.gbPlanifSoin.Controls.Add(this.cboPlanifSoins);
-            this.gbPlanifSoin.Location = new System.Drawing.Point(16, 452);
+            this.gbPlanifSoin.Location = new System.Drawing.Point(730, 69);
             this.gbPlanifSoin.Name = "gbPlanifSoin";
             this.gbPlanifSoin.Size = new System.Drawing.Size(237, 179);
             this.gbPlanifSoin.TabIndex = 42;
@@ -1808,9 +1814,9 @@
             this.gbReservation.Controls.Add(this.nbPersonnesTextBox);
             this.gbReservation.Controls.Add(this.cboReservation);
             this.gbReservation.Controls.Add(this.btnAnnulerReservation);
-            this.gbReservation.Location = new System.Drawing.Point(763, 491);
+            this.gbReservation.Location = new System.Drawing.Point(730, 69);
             this.gbReservation.Name = "gbReservation";
-            this.gbReservation.Size = new System.Drawing.Size(406, 227);
+            this.gbReservation.Size = new System.Drawing.Size(298, 196);
             this.gbReservation.TabIndex = 43;
             this.gbReservation.TabStop = false;
             this.gbReservation.Text = "Info sur une reservation";
@@ -1896,18 +1902,32 @@
             this.nosEtNomsClientsComboBox.DisplayMember = "NomComplet";
             this.nosEtNomsClientsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nosEtNomsClientsComboBox.FormattingEnabled = true;
-            this.nosEtNomsClientsComboBox.Location = new System.Drawing.Point(393, 33);
+            this.nosEtNomsClientsComboBox.Location = new System.Drawing.Point(19, 120);
             this.nosEtNomsClientsComboBox.Name = "nosEtNomsClientsComboBox";
             this.nosEtNomsClientsComboBox.Size = new System.Drawing.Size(153, 21);
             this.nosEtNomsClientsComboBox.TabIndex = 43;
             this.nosEtNomsClientsComboBox.ValueMember = "NoClient";
             this.nosEtNomsClientsComboBox.SelectionChangeCommitted += new System.EventHandler(this.nosEtNomsClientsComboBox_SelectedIndexChanged);
             // 
+            // rapportDesReservationsToolStripMenuItem
+            // 
+            this.rapportDesReservationsToolStripMenuItem.Name = "rapportDesReservationsToolStripMenuItem";
+            this.rapportDesReservationsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rapportDesReservationsToolStripMenuItem.Text = "Rapport des reservations";
+            this.rapportDesReservationsToolStripMenuItem.Click += new System.EventHandler(this.rapportDesReservationsToolStripMenuItem_Click);
+            // 
+            // rapportDesSoinsJournaliersToolStripMenuItem
+            // 
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Name = "rapportDesSoinsJournaliersToolStripMenuItem";
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Text = "Rapport des soins journaliers";
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Click += new System.EventHandler(this.rapportDesSoinsJournaliersToolStripMenuItem_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 738);
+            this.ClientSize = new System.Drawing.Size(1074, 328);
             this.Controls.Add(this.nosEtNomsClientsComboBox);
             this.Controls.Add(this.gbReservation);
             this.Controls.Add(this.gbPlanifSoin);
@@ -1916,11 +1936,11 @@
             this.Controls.Add(this.gbInfoTypeChambre);
             this.Controls.Add(this.gbInfoInvite);
             this.Controls.Add(this.gbInfoChambre);
+            this.Controls.Add(this.gbInfoClient);
             this.Controls.Add(this.cboChambres);
             this.Controls.Add(this.gbInfoSoins);
             this.Controls.Add(this.cboSoins);
             this.Controls.Add(this.gbInfoAssistants);
-            this.Controls.Add(this.gbInfoClient);
             this.Controls.Add(this.cboAssistants);
             this.Controls.Add(this.gbInfoUtilisateur);
             this.Controls.Add(this.cboClients);
@@ -2125,5 +2145,7 @@
         private System.Windows.Forms.BindingSource nosEtNomsClientsBindingSource;
         private BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter nosEtNomsClientsTableAdapter;
         private System.Windows.Forms.ComboBox nosEtNomsClientsComboBox;
+        private System.Windows.Forms.ToolStripMenuItem rapportDesReservationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rapportDesSoinsJournaliersToolStripMenuItem;
     }
 }

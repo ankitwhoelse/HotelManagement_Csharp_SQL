@@ -170,6 +170,7 @@
             // 
             this.noSoinTextBox.Location = new System.Drawing.Point(129, 48);
             this.noSoinTextBox.Name = "noSoinTextBox";
+            this.noSoinTextBox.ReadOnly = true;
             this.noSoinTextBox.Size = new System.Drawing.Size(100, 20);
             this.noSoinTextBox.TabIndex = 17;
             // 

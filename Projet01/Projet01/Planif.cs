@@ -54,8 +54,8 @@ namespace Projet01
 
         private void btn_ajouter_Click(object sender, EventArgs e)
         {
-            //DateTime tempsPlanif = datePicker.Value.Date + TimePicker.Value.TimeOfDay;
-            DateTime tempsPlanif = datePicker.Value;
+            DateTime tempsPlanif = datePicker.Value.Date + TimePicker.Value.TimeOfDay;
+            //DateTime tempsPlanif = datePicker.Value;
             DataRowView Personnes = CbPersonnes.SelectedItem as DataRowView;
             DataRowView Assistants = p01_AssistantComboBox.SelectedItem as DataRowView;
             string strAssistant = Assistants.Row["Prenom"] as string;
@@ -76,8 +76,40 @@ namespace Projet01
             Object NoAssistant = maCommande.ExecuteScalar();
             maConnexion.Close();
 
-            if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
+            //Vérification si le soin n'est pas donné à une autre personne à la mm date/heure
+            maConnexion = new SqlConnection(maChaineDeConnexion);
+            maConnexion.Open();
+
+            maRequeteSQL = "select DateHeure from P01_PlanifSoin where NoAssistant= '" + NoAssistant + "'";
+            maCommande = new SqlCommand(maRequeteSQL, maConnexion);
+            SqlDataReader Dates = maCommande.ExecuteReader();
+            bool booExiste = false;
+            if (Dates.HasRows)
+            {
+                while (Dates.Read())
+                {
+                    if (Dates["DateHeure"].ToString() == tempsPlanif.ToString())
+                        booExiste = true;
+
+                }
+                Dates.Close();
+                maConnexion.Close();
+            }
+            if (tempsPlanif < DateTime.Now)
+            {
+                MessageBox.Show("Date non valide", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           else if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
                 MessageBox.Show("Veuillez sélectionner une heure de réservation entre 8h et 17h ", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (tempsPlanif.DayOfWeek.ToString() == "Saturday" || tempsPlanif.DayOfWeek.ToString() == "Sunday")
+            {
+                MessageBox.Show("Il n'est pas possible de planifier un soin durant la fin de semaine", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (booExiste == true)
+            {
+                MessageBox.Show(strAssistant + " n'est pas disponible dans cette plage horaire", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+             
             else
             {
 

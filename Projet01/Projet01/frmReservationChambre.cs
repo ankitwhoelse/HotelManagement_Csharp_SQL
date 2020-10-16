@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Projet01
     public partial class frmReservationChambre : Form
     {
         public dynamic NoChambre;
-
+        String maChaineDeConnexion = "Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Ankit;Persist Security Info=True;User ID=B56Ankit;Password=Summit11g";
         public frmReservationChambre()
         {
             InitializeComponent();
@@ -47,8 +48,35 @@ namespace Projet01
                 MessageBox.Show("Veuillez remplir toutes les cases.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
             {
-                if (DateTime.Compare(dateArriveeDateTimePicker.Value, dateDepartDateTimePicker.Value) < 0)
-                {           // Ajout    
+                //Vérification si la chambre n'est pas donné à une autre personne à la mm date/heure
+                SqlConnection maConnexion = new SqlConnection(maChaineDeConnexion);
+                maConnexion.Open();
+
+                String maRequeteSQL = "select DateArrivee, DateDepart from P01_ReservationChambre where NoChambre= '" + NoChambre + "'";
+                SqlCommand maCommande = new SqlCommand(maRequeteSQL, maConnexion);
+                SqlDataReader Dates = maCommande.ExecuteReader();
+                bool booDispo = true;
+                if (Dates.HasRows)
+                {
+                    while (Dates.Read())
+                    {
+                        if ((DateTime)Dates["DateDepart"] > dateArriveeDateTimePicker.Value)
+                            booDispo = false;
+
+                    }
+                    Dates.Close();
+                    maConnexion.Close();
+                }
+                if (booDispo == false)
+                {
+                    MessageBox.Show(" Cette chambre n'est pas disponible à la date selectionnée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (dateArriveeDateTimePicker.Value.Day.ToString() == dateDepartDateTimePicker.Value.Day.ToString())
+                {
+                    MessageBox.Show(" La durée du séjour doit être au moins d'une nuit", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               else if (DateTime.Compare(dateArriveeDateTimePicker.Value, dateDepartDateTimePicker.Value) < 0)
+                {          // Ajout    
                     // Creer une nouvelle reservation en memoire
                     BDB56AnkitDataSet.P01_ReservationChambreRow uneReservation = bDB56AnkitDataSet.P01_ReservationChambre.NewP01_ReservationChambreRow();
 

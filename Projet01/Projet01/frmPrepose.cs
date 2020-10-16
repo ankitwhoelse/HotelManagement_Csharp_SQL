@@ -64,6 +64,16 @@ namespace Projet01
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
+            bDB56AnkitDataSet.P01_Utilisateur.WriteXml("utilisateur.xml");
+            bDB56AnkitDataSet.P01_Client.WriteXml("client.xml");
+            bDB56AnkitDataSet.P01_Invite.WriteXml("invite.xml");
+            bDB56AnkitDataSet.P01_Assistant.WriteXml("assistant.xml");
+            bDB56AnkitDataSet.P01_AssistantSoin.WriteXml("assistantSoin.xml");
+            bDB56AnkitDataSet.P01_Soin.WriteXml("soin.xml");
+            bDB56AnkitDataSet.P01_PlanifSoin.WriteXml("planificationSoin.xml");
+            bDB56AnkitDataSet.P01_Chambre.WriteXml("chambre.xml");
+            bDB56AnkitDataSet.P01_TypeChambre.WriteXml("typeChambre.xml");
+            bDB56AnkitDataSet.P01_ReservationChambre.WriteXml("reservationChambre.xml");
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)

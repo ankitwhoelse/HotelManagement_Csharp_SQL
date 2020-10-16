@@ -66,6 +66,8 @@
             this.nosEtNomsClientsComboBox = new System.Windows.Forms.ComboBox();
             this.nosEtNomsClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbInfoChambre = new System.Windows.Forms.GroupBox();
+            this.p01_TypeChambreComboBox = new System.Windows.Forms.ComboBox();
+            this.p01_TypeChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboChambre = new System.Windows.Forms.ComboBox();
             this.p01_ChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.noChambreTextBox = new System.Windows.Forms.TextBox();
@@ -85,9 +87,7 @@
             this.p01_InviteTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_InviteTableAdapter();
             this.lblBonjour = new System.Windows.Forms.Label();
             this.nosEtNomsClientsTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter();
-            this.p01_TypeChambreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p01_TypeChambreTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_TypeChambreTableAdapter();
-            this.p01_TypeChambreComboBox = new System.Windows.Forms.ComboBox();
             noClientLabel = new System.Windows.Forms.Label();
             nomLabel = new System.Windows.Forms.Label();
             prenomLabel = new System.Windows.Forms.Label();
@@ -108,10 +108,10 @@
             this.gbInfoClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).BeginInit();
             this.gbInfoChambre.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ChambreBindingSource)).BeginInit();
             this.gbInfoInvite.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p01_InviteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // noClientLabel
@@ -479,12 +479,30 @@
             this.gbInfoChambre.Controls.Add(this.decorationsTextBox);
             this.gbInfoChambre.Controls.Add(noTypeChambreLabel);
             this.gbInfoChambre.Controls.Add(this.btnAjouterReservation);
-            this.gbInfoChambre.Location = new System.Drawing.Point(532, 17);
+            this.gbInfoChambre.Location = new System.Drawing.Point(532, 19);
             this.gbInfoChambre.Name = "gbInfoChambre";
             this.gbInfoChambre.Size = new System.Drawing.Size(222, 202);
             this.gbInfoChambre.TabIndex = 38;
             this.gbInfoChambre.TabStop = false;
             this.gbInfoChambre.Text = "Information sur une chambre";
+            // 
+            // p01_TypeChambreComboBox
+            // 
+            this.p01_TypeChambreComboBox.DataSource = this.p01_TypeChambreBindingSource;
+            this.p01_TypeChambreComboBox.DisplayMember = "Description";
+            this.p01_TypeChambreComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.p01_TypeChambreComboBox.Enabled = false;
+            this.p01_TypeChambreComboBox.FormattingEnabled = true;
+            this.p01_TypeChambreComboBox.Location = new System.Drawing.Point(108, 125);
+            this.p01_TypeChambreComboBox.Name = "p01_TypeChambreComboBox";
+            this.p01_TypeChambreComboBox.Size = new System.Drawing.Size(100, 21);
+            this.p01_TypeChambreComboBox.TabIndex = 40;
+            this.p01_TypeChambreComboBox.ValueMember = "NoTypeChambre";
+            // 
+            // p01_TypeChambreBindingSource
+            // 
+            this.p01_TypeChambreBindingSource.DataMember = "P01_TypeChambre";
+            this.p01_TypeChambreBindingSource.DataSource = this.bDB56AnkitDataSet;
             // 
             // cboChambre
             // 
@@ -559,7 +577,7 @@
             this.gbInfoInvite.Controls.Add(this.btnAjoutInvite);
             this.gbInfoInvite.Location = new System.Drawing.Point(322, 19);
             this.gbInfoInvite.Name = "gbInfoInvite";
-            this.gbInfoInvite.Size = new System.Drawing.Size(204, 200);
+            this.gbInfoInvite.Size = new System.Drawing.Size(204, 202);
             this.gbInfoInvite.TabIndex = 39;
             this.gbInfoInvite.TabStop = false;
             this.gbInfoInvite.Text = "Information sur l\'invite";
@@ -656,27 +674,9 @@
             // 
             this.nosEtNomsClientsTableAdapter.ClearBeforeFill = true;
             // 
-            // p01_TypeChambreBindingSource
-            // 
-            this.p01_TypeChambreBindingSource.DataMember = "P01_TypeChambre";
-            this.p01_TypeChambreBindingSource.DataSource = this.bDB56AnkitDataSet;
-            // 
             // p01_TypeChambreTableAdapter
             // 
             this.p01_TypeChambreTableAdapter.ClearBeforeFill = true;
-            // 
-            // p01_TypeChambreComboBox
-            // 
-            this.p01_TypeChambreComboBox.DataSource = this.p01_TypeChambreBindingSource;
-            this.p01_TypeChambreComboBox.DisplayMember = "Description";
-            this.p01_TypeChambreComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.p01_TypeChambreComboBox.Enabled = false;
-            this.p01_TypeChambreComboBox.FormattingEnabled = true;
-            this.p01_TypeChambreComboBox.Location = new System.Drawing.Point(108, 125);
-            this.p01_TypeChambreComboBox.Name = "p01_TypeChambreComboBox";
-            this.p01_TypeChambreComboBox.Size = new System.Drawing.Size(100, 21);
-            this.p01_TypeChambreComboBox.TabIndex = 40;
-            this.p01_TypeChambreComboBox.ValueMember = "NoTypeChambre";
             // 
             // frmPrepose
             // 
@@ -702,11 +702,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nosEtNomsClientsBindingSource)).EndInit();
             this.gbInfoChambre.ResumeLayout(false);
             this.gbInfoChambre.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ChambreBindingSource)).EndInit();
             this.gbInfoInvite.ResumeLayout(false);
             this.gbInfoInvite.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p01_InviteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
