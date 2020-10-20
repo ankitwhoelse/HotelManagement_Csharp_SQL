@@ -14,7 +14,9 @@ namespace Projet01
     public partial class frmReservationChambre : Form
     {
         public dynamic NoChambre;
+
         String maChaineDeConnexion = "Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Ankit;Persist Security Info=True;User ID=B56Ankit;Password=Summit11g";
+
         public frmReservationChambre()
         {
             InitializeComponent();
@@ -100,20 +102,24 @@ namespace Projet01
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void frmReservationChambre_FormClosing(object sender, FormClosingEventArgs e)
+        {
             if (this.Controls.OfType<TextBox>().Any(tBox => string.IsNullOrEmpty(tBox.Text)))
             {
                 DialogResult resulat = MessageBox.Show("Etes vous certain d'annuler l'ajout?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                 if (resulat == DialogResult.Yes)
                 {
-                    this.Close();
+
                 }
                 else if (resulat == DialogResult.No)
                 {
-                    return;
+                    e.Cancel = true;
                 }
             }
         }
-        
     }
 }

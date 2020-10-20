@@ -198,6 +198,7 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.assistantsListTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
@@ -213,6 +214,7 @@
             this.tableAdapterManager.P01_TypeSoinTableAdapter = null;
             this.tableAdapterManager.P01_TypeUtilisateurTableAdapter = null;
             this.tableAdapterManager.P01_UtilisateurTableAdapter = null;
+            this.tableAdapterManager.soinDateAssistantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // p01_ReservationChambreBindingSource
@@ -268,6 +270,7 @@
             this.MinimizeBox = false;
             this.Name = "frmReservationChambre";
             this.Text = "frmReservationChambre";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReservationChambre_FormClosing);
             this.Load += new System.EventHandler(this.frmReservationChambre_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_ClientBindingSource)).EndInit();

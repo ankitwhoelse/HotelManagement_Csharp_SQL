@@ -84,6 +84,8 @@
             this.chambresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualiserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rapportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rapportDesReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rapportDesSoinsJournaliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bDB56AnkitDataSet = new Projet01.BDB56AnkitDataSet();
             this.p01_UtilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p01_UtilisateurTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.P01_UtilisateurTableAdapter();
@@ -206,8 +208,6 @@
             this.nosEtNomsClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nosEtNomsClientsTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.nosEtNomsClientsTableAdapter();
             this.nosEtNomsClientsComboBox = new System.Windows.Forms.ComboBox();
-            this.rapportDesReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rapportDesSoinsJournaliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             noUtilisateurLabel = new System.Windows.Forms.Label();
             nomUtilisateurLabel = new System.Windows.Forms.Label();
             motDePasseLabel = new System.Windows.Forms.Label();
@@ -778,6 +778,20 @@
             this.rapportsToolStripMenuItem.Text = "Rapport des soins offerts";
             this.rapportsToolStripMenuItem.Click += new System.EventHandler(this.rapportsToolStripMenuItem_Click);
             // 
+            // rapportDesReservationsToolStripMenuItem
+            // 
+            this.rapportDesReservationsToolStripMenuItem.Name = "rapportDesReservationsToolStripMenuItem";
+            this.rapportDesReservationsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rapportDesReservationsToolStripMenuItem.Text = "Rapport des reservations";
+            this.rapportDesReservationsToolStripMenuItem.Click += new System.EventHandler(this.rapportDesReservationsToolStripMenuItem_Click);
+            // 
+            // rapportDesSoinsJournaliersToolStripMenuItem
+            // 
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Name = "rapportDesSoinsJournaliersToolStripMenuItem";
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Text = "Rapport des soins journaliers";
+            this.rapportDesSoinsJournaliersToolStripMenuItem.Click += new System.EventHandler(this.rapportDesSoinsJournaliersToolStripMenuItem_Click);
+            // 
             // bDB56AnkitDataSet
             // 
             this.bDB56AnkitDataSet.DataSetName = "BDB56AnkitDataSet";
@@ -794,6 +808,7 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.assistantsListTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
@@ -808,6 +823,7 @@
             this.tableAdapterManager.P01_TypeSoinTableAdapter = null;
             this.tableAdapterManager.P01_TypeUtilisateurTableAdapter = null;
             this.tableAdapterManager.P01_UtilisateurTableAdapter = this.p01_UtilisateurTableAdapter;
+            this.tableAdapterManager.soinDateAssistantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // p01_ClientBindingSource
@@ -834,9 +850,9 @@
             this.cboUtilisateurs.DisplayMember = "NomUtilisateur";
             this.cboUtilisateurs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUtilisateurs.FormattingEnabled = true;
-            this.cboUtilisateurs.Location = new System.Drawing.Point(14, 120);
+            this.cboUtilisateurs.Location = new System.Drawing.Point(19, 120);
             this.cboUtilisateurs.Name = "cboUtilisateurs";
-            this.cboUtilisateurs.Size = new System.Drawing.Size(156, 21);
+            this.cboUtilisateurs.Size = new System.Drawing.Size(151, 21);
             this.cboUtilisateurs.TabIndex = 3;
             this.cboUtilisateurs.ValueMember = "NoUtilisateur";
             // 
@@ -1246,9 +1262,9 @@
             this.cboChambres.DisplayMember = "NoChambre";
             this.cboChambres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboChambres.FormattingEnabled = true;
-            this.cboChambres.Location = new System.Drawing.Point(16, 120);
+            this.cboChambres.Location = new System.Drawing.Point(17, 120);
             this.cboChambres.Name = "cboChambres";
-            this.cboChambres.Size = new System.Drawing.Size(154, 21);
+            this.cboChambres.Size = new System.Drawing.Size(153, 21);
             this.cboChambres.TabIndex = 36;
             this.cboChambres.ValueMember = "NoChambre";
             // 
@@ -1902,26 +1918,12 @@
             this.nosEtNomsClientsComboBox.DisplayMember = "NomComplet";
             this.nosEtNomsClientsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nosEtNomsClientsComboBox.FormattingEnabled = true;
-            this.nosEtNomsClientsComboBox.Location = new System.Drawing.Point(19, 120);
+            this.nosEtNomsClientsComboBox.Location = new System.Drawing.Point(20, 120);
             this.nosEtNomsClientsComboBox.Name = "nosEtNomsClientsComboBox";
             this.nosEtNomsClientsComboBox.Size = new System.Drawing.Size(153, 21);
             this.nosEtNomsClientsComboBox.TabIndex = 43;
             this.nosEtNomsClientsComboBox.ValueMember = "NoClient";
             this.nosEtNomsClientsComboBox.SelectionChangeCommitted += new System.EventHandler(this.nosEtNomsClientsComboBox_SelectedIndexChanged);
-            // 
-            // rapportDesReservationsToolStripMenuItem
-            // 
-            this.rapportDesReservationsToolStripMenuItem.Name = "rapportDesReservationsToolStripMenuItem";
-            this.rapportDesReservationsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.rapportDesReservationsToolStripMenuItem.Text = "Rapport des reservations";
-            this.rapportDesReservationsToolStripMenuItem.Click += new System.EventHandler(this.rapportDesReservationsToolStripMenuItem_Click);
-            // 
-            // rapportDesSoinsJournaliersToolStripMenuItem
-            // 
-            this.rapportDesSoinsJournaliersToolStripMenuItem.Name = "rapportDesSoinsJournaliersToolStripMenuItem";
-            this.rapportDesSoinsJournaliersToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.rapportDesSoinsJournaliersToolStripMenuItem.Text = "Rapport des soins journaliers";
-            this.rapportDesSoinsJournaliersToolStripMenuItem.Click += new System.EventHandler(this.rapportDesSoinsJournaliersToolStripMenuItem_Click);
             // 
             // frmAdmin
             // 

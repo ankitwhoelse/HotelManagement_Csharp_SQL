@@ -119,6 +119,7 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.assistantsListTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
@@ -133,6 +134,7 @@
             this.tableAdapterManager.P01_TypeSoinTableAdapter = null;
             this.tableAdapterManager.P01_TypeUtilisateurTableAdapter = null;
             this.tableAdapterManager.P01_UtilisateurTableAdapter = null;
+            this.tableAdapterManager.soinDateAssistantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lblTitre
@@ -215,7 +217,6 @@
             this.cboTypeSoin.Size = new System.Drawing.Size(100, 21);
             this.cboTypeSoin.TabIndex = 17;
             this.cboTypeSoin.ValueMember = "NoTypeSoin";
-            this.cboTypeSoin.SelectedIndexChanged += new System.EventHandler(this.p01_TypeSoinComboBox_SelectedIndexChanged);
             // 
             // frmSoin
             // 
@@ -240,6 +241,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSoin";
             this.Text = "frmSoin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSoin_FormClosing);
             this.Load += new System.EventHandler(this.frmSoin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_SoinBindingSource)).EndInit();

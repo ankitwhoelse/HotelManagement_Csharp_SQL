@@ -68,6 +68,8 @@ namespace Projet01 {
         
         private soinDateAssistantDataTable tablesoinDateAssistant;
         
+        private noClient_nomClient_noChambreDataTable tablenoClient_nomClient_noChambre;
+        
         private global::System.Data.DataRelation relationfk_NoAssistantCli;
         
         private global::System.Data.DataRelation relationfk_NoSoinAssistant;
@@ -101,6 +103,24 @@ namespace Projet01 {
         private global::System.Data.DataRelation relationfk_NoSoinPlanif4;
         
         private global::System.Data.DataRelation relationsoinDateAssistant_rapportSoinsAssistant;
+        
+        private global::System.Data.DataRelation relationfk_RC_Client2;
+        
+        private global::System.Data.DataRelation relationfk_RC_Client3;
+        
+        private global::System.Data.DataRelation relationfk_NoAssistantCli1;
+        
+        private global::System.Data.DataRelation relationfk_NoSoinAssistant1;
+        
+        private global::System.Data.DataRelation relationfk_NoAssistantPlanif1;
+        
+        private global::System.Data.DataRelation relationfk_NoSoinPlanif1;
+        
+        private global::System.Data.DataRelation relationfk_NoAssistantPlanif2;
+        
+        private global::System.Data.DataRelation relationfk_NoSoinPlanif2;
+        
+        private global::System.Data.DataRelation relationfk_NoSoinPlanif3;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -199,6 +219,9 @@ namespace Projet01 {
                 }
                 if ((ds.Tables["soinDateAssistant"] != null)) {
                     base.Tables.Add(new soinDateAssistantDataTable(ds.Tables["soinDateAssistant"]));
+                }
+                if ((ds.Tables["noClient_nomClient_noChambre"] != null)) {
+                    base.Tables.Add(new noClient_nomClient_noChambreDataTable(ds.Tables["noClient_nomClient_noChambre"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -441,6 +464,16 @@ namespace Projet01 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public noClient_nomClient_noChambreDataTable noClient_nomClient_noChambre {
+            get {
+                return this.tablenoClient_nomClient_noChambre;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -572,6 +605,9 @@ namespace Projet01 {
                 }
                 if ((ds.Tables["soinDateAssistant"] != null)) {
                     base.Tables.Add(new soinDateAssistantDataTable(ds.Tables["soinDateAssistant"]));
+                }
+                if ((ds.Tables["noClient_nomClient_noChambre"] != null)) {
+                    base.Tables.Add(new noClient_nomClient_noChambreDataTable(ds.Tables["noClient_nomClient_noChambre"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -738,6 +774,12 @@ namespace Projet01 {
                     this.tablesoinDateAssistant.InitVars();
                 }
             }
+            this.tablenoClient_nomClient_noChambre = ((noClient_nomClient_noChambreDataTable)(base.Tables["noClient_nomClient_noChambre"]));
+            if ((initTable == true)) {
+                if ((this.tablenoClient_nomClient_noChambre != null)) {
+                    this.tablenoClient_nomClient_noChambre.InitVars();
+                }
+            }
             this.relationfk_NoAssistantCli = this.Relations["fk_NoAssistantCli"];
             this.relationfk_NoSoinAssistant = this.Relations["fk_NoSoinAssistant"];
             this.relationfk_CHAM_TypeChambre = this.Relations["fk_CHAM_TypeChambre"];
@@ -755,6 +797,15 @@ namespace Projet01 {
             this.relationfk_NoAssistantPlanif4 = this.Relations["fk_NoAssistantPlanif4"];
             this.relationfk_NoSoinPlanif4 = this.Relations["fk_NoSoinPlanif4"];
             this.relationsoinDateAssistant_rapportSoinsAssistant = this.Relations["soinDateAssistant_rapportSoinsAssistant"];
+            this.relationfk_RC_Client2 = this.Relations["fk_RC_Client2"];
+            this.relationfk_RC_Client3 = this.Relations["fk_RC_Client3"];
+            this.relationfk_NoAssistantCli1 = this.Relations["fk_NoAssistantCli1"];
+            this.relationfk_NoSoinAssistant1 = this.Relations["fk_NoSoinAssistant1"];
+            this.relationfk_NoAssistantPlanif1 = this.Relations["fk_NoAssistantPlanif1"];
+            this.relationfk_NoSoinPlanif1 = this.Relations["fk_NoSoinPlanif1"];
+            this.relationfk_NoAssistantPlanif2 = this.Relations["fk_NoAssistantPlanif2"];
+            this.relationfk_NoSoinPlanif2 = this.Relations["fk_NoSoinPlanif2"];
+            this.relationfk_NoSoinPlanif3 = this.Relations["fk_NoSoinPlanif3"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -809,6 +860,8 @@ namespace Projet01 {
             base.Tables.Add(this.tabledateSoinAssistant);
             this.tablesoinDateAssistant = new soinDateAssistantDataTable();
             base.Tables.Add(this.tablesoinDateAssistant);
+            this.tablenoClient_nomClient_noChambre = new noClient_nomClient_noChambreDataTable();
+            base.Tables.Add(this.tablenoClient_nomClient_noChambre);
             this.relationfk_NoAssistantCli = new global::System.Data.DataRelation("fk_NoAssistantCli", new global::System.Data.DataColumn[] {
                         this.tableP01_Assistant.NoAssistantColumn}, new global::System.Data.DataColumn[] {
                         this.tableP01_AssistantSoin.NoAssistantColumn}, false);
@@ -877,6 +930,42 @@ namespace Projet01 {
                         this.tablesoinDateAssistant.NoSoinColumn}, new global::System.Data.DataColumn[] {
                         this.tablerapportSoinsAssistant.NoSoinColumn}, false);
             this.Relations.Add(this.relationsoinDateAssistant_rapportSoinsAssistant);
+            this.relationfk_RC_Client2 = new global::System.Data.DataRelation("fk_RC_Client2", new global::System.Data.DataColumn[] {
+                        this.tableP01_Client.NoClientColumn}, new global::System.Data.DataColumn[] {
+                        this.tablenoClient_nomClient_noChambre.NoClientColumn}, false);
+            this.Relations.Add(this.relationfk_RC_Client2);
+            this.relationfk_RC_Client3 = new global::System.Data.DataRelation("fk_RC_Client3", new global::System.Data.DataColumn[] {
+                        this.tablenosEtNomsClients.NoClientColumn}, new global::System.Data.DataColumn[] {
+                        this.tablenoClient_nomClient_noChambre.NoClientColumn}, false);
+            this.Relations.Add(this.relationfk_RC_Client3);
+            this.relationfk_NoAssistantCli1 = new global::System.Data.DataRelation("fk_NoAssistantCli1", new global::System.Data.DataColumn[] {
+                        this.tableassistantsList.NoAssistantColumn}, new global::System.Data.DataColumn[] {
+                        this.tableP01_AssistantSoin.NoAssistantColumn}, false);
+            this.Relations.Add(this.relationfk_NoAssistantCli1);
+            this.relationfk_NoSoinAssistant1 = new global::System.Data.DataRelation("fk_NoSoinAssistant1", new global::System.Data.DataColumn[] {
+                        this.tablesoinDateAssistant.NoSoinColumn}, new global::System.Data.DataColumn[] {
+                        this.tableP01_AssistantSoin.NoSoinColumn}, false);
+            this.Relations.Add(this.relationfk_NoSoinAssistant1);
+            this.relationfk_NoAssistantPlanif1 = new global::System.Data.DataRelation("fk_NoAssistantPlanif1", new global::System.Data.DataColumn[] {
+                        this.tableassistantsList.NoAssistantColumn}, new global::System.Data.DataColumn[] {
+                        this.tableP01_PlanifSoin.NoAssistantColumn}, false);
+            this.Relations.Add(this.relationfk_NoAssistantPlanif1);
+            this.relationfk_NoSoinPlanif1 = new global::System.Data.DataRelation("fk_NoSoinPlanif1", new global::System.Data.DataColumn[] {
+                        this.tablesoinDateAssistant.NoSoinColumn}, new global::System.Data.DataColumn[] {
+                        this.tableP01_PlanifSoin.NoSoinColumn}, false);
+            this.Relations.Add(this.relationfk_NoSoinPlanif1);
+            this.relationfk_NoAssistantPlanif2 = new global::System.Data.DataRelation("fk_NoAssistantPlanif2", new global::System.Data.DataColumn[] {
+                        this.tableP01_Assistant.NoAssistantColumn}, new global::System.Data.DataColumn[] {
+                        this.tabledateSoinAssistant.NoAssistantColumn}, false);
+            this.Relations.Add(this.relationfk_NoAssistantPlanif2);
+            this.relationfk_NoSoinPlanif2 = new global::System.Data.DataRelation("fk_NoSoinPlanif2", new global::System.Data.DataColumn[] {
+                        this.tableP01_Soin.NoSoinColumn}, new global::System.Data.DataColumn[] {
+                        this.tabledateSoinAssistant.NoSoinColumn}, false);
+            this.Relations.Add(this.relationfk_NoSoinPlanif2);
+            this.relationfk_NoSoinPlanif3 = new global::System.Data.DataRelation("fk_NoSoinPlanif3", new global::System.Data.DataColumn[] {
+                        this.tablesoinDateAssistant.NoSoinColumn}, new global::System.Data.DataColumn[] {
+                        this.tabledateSoinAssistant.NoSoinColumn}, false);
+            this.Relations.Add(this.relationfk_NoSoinPlanif3);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,6 +1102,12 @@ namespace Projet01 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializenoClient_nomClient_noChambre() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1137,6 +1232,9 @@ namespace Projet01 {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void soinDateAssistantRowChangeEventHandler(object sender, soinDateAssistantRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void noClient_nomClient_noChambreRowChangeEventHandler(object sender, noClient_nomClient_noChambreRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7177,14 +7275,17 @@ namespace Projet01 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public dateSoinAssistantRow AdddateSoinAssistantRow(System.DateTime Date, assistantsListRow parentassistantsListRowByfk_NoAssistantPlanif4, short NoSoin) {
+            public dateSoinAssistantRow AdddateSoinAssistantRow(System.DateTime Date, assistantsListRow parentassistantsListRowByfk_NoAssistantPlanif4, P01_SoinRow parentP01_SoinRowByfk_NoSoinPlanif2) {
                 dateSoinAssistantRow rowdateSoinAssistantRow = ((dateSoinAssistantRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Date,
                         null,
-                        NoSoin};
+                        null};
                 if ((parentassistantsListRowByfk_NoAssistantPlanif4 != null)) {
                     columnValuesArray[1] = parentassistantsListRowByfk_NoAssistantPlanif4[1];
+                }
+                if ((parentP01_SoinRowByfk_NoSoinPlanif2 != null)) {
+                    columnValuesArray[2] = parentP01_SoinRowByfk_NoSoinPlanif2[0];
                 }
                 rowdateSoinAssistantRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdateSoinAssistantRow);
@@ -7627,6 +7728,288 @@ namespace Projet01 {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class noClient_nomClient_noChambreDataTable : global::System.Data.TypedTableBase<noClient_nomClient_noChambreRow> {
+            
+            private global::System.Data.DataColumn columnNoClient;
+            
+            private global::System.Data.DataColumn columnNomComplet;
+            
+            private global::System.Data.DataColumn columnNoClient1;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreDataTable() {
+                this.TableName = "noClient_nomClient_noChambre";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal noClient_nomClient_noChambreDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected noClient_nomClient_noChambreDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NoClientColumn {
+                get {
+                    return this.columnNoClient;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NomCompletColumn {
+                get {
+                    return this.columnNomComplet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NoClient1Column {
+                get {
+                    return this.columnNoClient1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow this[int index] {
+                get {
+                    return ((noClient_nomClient_noChambreRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event noClient_nomClient_noChambreRowChangeEventHandler noClient_nomClient_noChambreRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event noClient_nomClient_noChambreRowChangeEventHandler noClient_nomClient_noChambreRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event noClient_nomClient_noChambreRowChangeEventHandler noClient_nomClient_noChambreRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event noClient_nomClient_noChambreRowChangeEventHandler noClient_nomClient_noChambreRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddnoClient_nomClient_noChambreRow(noClient_nomClient_noChambreRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow AddnoClient_nomClient_noChambreRow(P01_ClientRow parentP01_ClientRowByfk_RC_Client2, string NomComplet, short NoClient1) {
+                noClient_nomClient_noChambreRow rownoClient_nomClient_noChambreRow = ((noClient_nomClient_noChambreRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        NomComplet,
+                        NoClient1};
+                if ((parentP01_ClientRowByfk_RC_Client2 != null)) {
+                    columnValuesArray[0] = parentP01_ClientRowByfk_RC_Client2[0];
+                }
+                rownoClient_nomClient_noChambreRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rownoClient_nomClient_noChambreRow);
+                return rownoClient_nomClient_noChambreRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                noClient_nomClient_noChambreDataTable cln = ((noClient_nomClient_noChambreDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new noClient_nomClient_noChambreDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnNoClient = base.Columns["NoClient"];
+                this.columnNomComplet = base.Columns["NomComplet"];
+                this.columnNoClient1 = base.Columns["NoClient1"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnNoClient = new global::System.Data.DataColumn("NoClient", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoClient);
+                this.columnNomComplet = new global::System.Data.DataColumn("NomComplet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomComplet);
+                this.columnNoClient1 = new global::System.Data.DataColumn("NoClient1", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoClient1);
+                this.columnNoClient.AllowDBNull = false;
+                this.columnNomComplet.ReadOnly = true;
+                this.columnNomComplet.MaxLength = 104;
+                this.columnNoClient1.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow NewnoClient_nomClient_noChambreRow() {
+                return ((noClient_nomClient_noChambreRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new noClient_nomClient_noChambreRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(noClient_nomClient_noChambreRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.noClient_nomClient_noChambreRowChanged != null)) {
+                    this.noClient_nomClient_noChambreRowChanged(this, new noClient_nomClient_noChambreRowChangeEvent(((noClient_nomClient_noChambreRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.noClient_nomClient_noChambreRowChanging != null)) {
+                    this.noClient_nomClient_noChambreRowChanging(this, new noClient_nomClient_noChambreRowChangeEvent(((noClient_nomClient_noChambreRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.noClient_nomClient_noChambreRowDeleted != null)) {
+                    this.noClient_nomClient_noChambreRowDeleted(this, new noClient_nomClient_noChambreRowChangeEvent(((noClient_nomClient_noChambreRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.noClient_nomClient_noChambreRowDeleting != null)) {
+                    this.noClient_nomClient_noChambreRowDeleting(this, new noClient_nomClient_noChambreRowChangeEvent(((noClient_nomClient_noChambreRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemovenoClient_nomClient_noChambreRow(noClient_nomClient_noChambreRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BDB56AnkitDataSet ds = new BDB56AnkitDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "noClient_nomClient_noChambreDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class P01_AssistantRow : global::System.Data.DataRow {
@@ -7784,6 +8167,17 @@ namespace Projet01 {
                     return ((P01_PlanifSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoAssistantPlanif"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public dateSoinAssistantRow[] GetdateSoinAssistantRows() {
+                if ((this.Table.ChildRelations["fk_NoAssistantPlanif2"] == null)) {
+                    return new dateSoinAssistantRow[0];
+                }
+                else {
+                    return ((dateSoinAssistantRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoAssistantPlanif2"])));
+                }
+            }
         }
         
         /// <summary>
@@ -7841,6 +8235,28 @@ namespace Projet01 {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["fk_NoSoinAssistant"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public assistantsListRow assistantsListRow {
+                get {
+                    return ((assistantsListRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoAssistantCli1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoAssistantCli1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public soinDateAssistantRow soinDateAssistantRow {
+                get {
+                    return ((soinDateAssistantRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoSoinAssistant1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoSoinAssistant1"]);
                 }
             }
         }
@@ -8219,6 +8635,17 @@ namespace Projet01 {
                     return ((P01_ReservationChambreRow[])(base.GetChildRows(this.Table.ChildRelations["fk_RC_Client"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow[] GetnoClient_nomClient_noChambreRows() {
+                if ((this.Table.ChildRelations["fk_RC_Client2"] == null)) {
+                    return new noClient_nomClient_noChambreRow[0];
+                }
+                else {
+                    return ((noClient_nomClient_noChambreRow[])(base.GetChildRows(this.Table.ChildRelations["fk_RC_Client2"])));
+                }
+            }
         }
         
         /// <summary>
@@ -8412,6 +8839,28 @@ namespace Projet01 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public assistantsListRow assistantsListRow {
+                get {
+                    return ((assistantsListRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoAssistantPlanif1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoAssistantPlanif1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public soinDateAssistantRow soinDateAssistantRow {
+                get {
+                    return ((soinDateAssistantRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoSoinPlanif1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoSoinPlanif1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNoSoinNull() {
                 return this.IsNull(this.tableP01_PlanifSoin.NoSoinColumn);
             }
@@ -8590,6 +9039,17 @@ namespace Projet01 {
                 }
                 else {
                     return ((P01_PlanifSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoSoinPlanif"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public dateSoinAssistantRow[] GetdateSoinAssistantRows() {
+                if ((this.Table.ChildRelations["fk_NoSoinPlanif2"] == null)) {
+                    return new dateSoinAssistantRow[0];
+                }
+                else {
+                    return ((dateSoinAssistantRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoSoinPlanif2"])));
                 }
             }
         }
@@ -9387,6 +9847,17 @@ namespace Projet01 {
                     return ((P01_ReservationChambreRow[])(base.GetChildRows(this.Table.ChildRelations["fk_RC_Client1"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow[] GetnoClient_nomClient_noChambreRows() {
+                if ((this.Table.ChildRelations["fk_RC_Client3"] == null)) {
+                    return new noClient_nomClient_noChambreRow[0];
+                }
+                else {
+                    return ((noClient_nomClient_noChambreRow[])(base.GetChildRows(this.Table.ChildRelations["fk_RC_Client3"])));
+                }
+            }
         }
         
         /// <summary>
@@ -9924,6 +10395,28 @@ namespace Projet01 {
                     return ((dateSoinAssistantRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoAssistantPlanif4"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_AssistantSoinRow[] GetP01_AssistantSoinRows() {
+                if ((this.Table.ChildRelations["fk_NoAssistantCli1"] == null)) {
+                    return new P01_AssistantSoinRow[0];
+                }
+                else {
+                    return ((P01_AssistantSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoAssistantCli1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_PlanifSoinRow[] GetP01_PlanifSoinRows() {
+                if ((this.Table.ChildRelations["fk_NoAssistantPlanif1"] == null)) {
+                    return new P01_PlanifSoinRow[0];
+                }
+                else {
+                    return ((P01_PlanifSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoAssistantPlanif1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -9991,6 +10484,39 @@ namespace Projet01 {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["fk_NoAssistantPlanif4"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_AssistantRow P01_AssistantRow {
+                get {
+                    return ((P01_AssistantRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoAssistantPlanif2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoAssistantPlanif2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_SoinRow P01_SoinRow {
+                get {
+                    return ((P01_SoinRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoSoinPlanif2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoSoinPlanif2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public soinDateAssistantRow soinDateAssistantRow {
+                get {
+                    return ((soinDateAssistantRow)(this.GetParentRow(this.Table.ParentRelations["fk_NoSoinPlanif3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_NoSoinPlanif3"]);
                 }
             }
             
@@ -10103,6 +10629,127 @@ namespace Projet01 {
                 else {
                     return ((rapportSoinsAssistantRow[])(base.GetChildRows(this.Table.ChildRelations["soinDateAssistant_rapportSoinsAssistant"])));
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_AssistantSoinRow[] GetP01_AssistantSoinRows() {
+                if ((this.Table.ChildRelations["fk_NoSoinAssistant1"] == null)) {
+                    return new P01_AssistantSoinRow[0];
+                }
+                else {
+                    return ((P01_AssistantSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoSoinAssistant1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_PlanifSoinRow[] GetP01_PlanifSoinRows() {
+                if ((this.Table.ChildRelations["fk_NoSoinPlanif1"] == null)) {
+                    return new P01_PlanifSoinRow[0];
+                }
+                else {
+                    return ((P01_PlanifSoinRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoSoinPlanif1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public dateSoinAssistantRow[] GetdateSoinAssistantRows() {
+                if ((this.Table.ChildRelations["fk_NoSoinPlanif3"] == null)) {
+                    return new dateSoinAssistantRow[0];
+                }
+                else {
+                    return ((dateSoinAssistantRow[])(base.GetChildRows(this.Table.ChildRelations["fk_NoSoinPlanif3"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class noClient_nomClient_noChambreRow : global::System.Data.DataRow {
+            
+            private noClient_nomClient_noChambreDataTable tablenoClient_nomClient_noChambre;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal noClient_nomClient_noChambreRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablenoClient_nomClient_noChambre = ((noClient_nomClient_noChambreDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short NoClient {
+                get {
+                    return ((short)(this[this.tablenoClient_nomClient_noChambre.NoClientColumn]));
+                }
+                set {
+                    this[this.tablenoClient_nomClient_noChambre.NoClientColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NomComplet {
+                get {
+                    try {
+                        return ((string)(this[this.tablenoClient_nomClient_noChambre.NomCompletColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NomComplet\' in table \'noClient_nomClient_noChambre\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablenoClient_nomClient_noChambre.NomCompletColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short NoClient1 {
+                get {
+                    return ((short)(this[this.tablenoClient_nomClient_noChambre.NoClient1Column]));
+                }
+                set {
+                    this[this.tablenoClient_nomClient_noChambre.NoClient1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public P01_ClientRow P01_ClientRow {
+                get {
+                    return ((P01_ClientRow)(this.GetParentRow(this.Table.ParentRelations["fk_RC_Client2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_RC_Client2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public nosEtNomsClientsRow nosEtNomsClientsRow {
+                get {
+                    return ((nosEtNomsClientsRow)(this.GetParentRow(this.Table.ParentRelations["fk_RC_Client3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_RC_Client3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNomCompletNull() {
+                return this.IsNull(this.tablenoClient_nomClient_noChambre.NomCompletColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNomCompletNull() {
+                this[this.tablenoClient_nomClient_noChambre.NomCompletColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10840,6 +11487,40 @@ namespace Projet01 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public soinDateAssistantRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class noClient_nomClient_noChambreRowChangeEvent : global::System.EventArgs {
+            
+            private noClient_nomClient_noChambreRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRowChangeEvent(noClient_nomClient_noChambreRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public noClient_nomClient_noChambreRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -17652,6 +18333,177 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class noClient_nomClient_noChambreTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public noClient_nomClient_noChambreTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "noClient_nomClient_noChambre";
+            tableMapping.ColumnMappings.Add("NoClient", "NoClient");
+            tableMapping.ColumnMappings.Add("NomComplet", "NomComplet");
+            tableMapping.ColumnMappings.Add("NoClient1", "NoClient1");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Projet01.Properties.Settings.Default.BDB56AnkitConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Rs.NoClient, CAST(Rs.NoClient as varchar) +\': \'+ Prenom +\' \'+ Nom +\', Cham" +
+                "bre: \' + CAST(NoChambre as varchar) as \'NomComplet\', Rs.NoClient\r\nFROM P01_Reser" +
+                "vationChambre Rs \r\nLEFT JOIN P01_Client C on C.NoClient = Rs.NoClient";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BDB56AnkitDataSet.noClient_nomClient_noChambreDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BDB56AnkitDataSet.noClient_nomClient_noChambreDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BDB56AnkitDataSet.noClient_nomClient_noChambreDataTable dataTable = new BDB56AnkitDataSet.noClient_nomClient_noChambreDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -18066,30 +18918,12 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(BDB56AnkitDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._assistantsListTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._assistantsListTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._p01_TypeSoinTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.P01_TypeSoin.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._p01_TypeSoinTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._p01_TypeChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._p01_TypeChambreTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18102,39 +18936,12 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._nosEtNomsClientsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._assistantsListTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._nosEtNomsClientsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._p01_ClientTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._p01_ClientTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._p01_ChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._p01_ChambreTableAdapter.Update(updatedRows));
+                    result = (result + this._assistantsListTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18153,6 +18960,60 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._soinDateAssistantTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._p01_TypeChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._p01_TypeChambreTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._p01_ChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._p01_ChambreTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._p01_ClientTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._p01_ClientTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nosEtNomsClientsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nosEtNomsClientsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._p01_ReservationChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._p01_ReservationChambreTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18183,15 +19044,6 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._p01_ReservationChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._p01_ReservationChambreTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._p01_AssistantSoinTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.P01_AssistantSoin.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -18211,27 +19063,11 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(BDB56AnkitDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._assistantsListTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._assistantsListTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._p01_TypeSoinTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.P01_TypeSoin.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._p01_TypeSoinTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._p01_TypeChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._p01_TypeChambreTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18243,35 +19079,11 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._nosEtNomsClientsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._assistantsListTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._nosEtNomsClientsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._p01_ClientTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._p01_ClientTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._p01_ChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._p01_ChambreTableAdapter.Update(addedRows));
+                    result = (result + this._assistantsListTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18288,6 +19100,54 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._soinDateAssistantTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._p01_TypeChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._p01_TypeChambreTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._p01_ChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._p01_ChambreTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._p01_ClientTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._p01_ClientTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nosEtNomsClientsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nosEtNomsClientsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._p01_ReservationChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._p01_ReservationChambreTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18312,14 +19172,6 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._p01_InviteTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._p01_ReservationChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._p01_ReservationChambreTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18349,14 +19201,6 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._p01_ReservationChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._p01_ReservationChambreTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._p01_InviteTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.P01_Invite.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18381,6 +19225,54 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._p01_ReservationChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.P01_ReservationChambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._p01_ReservationChambreTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._nosEtNomsClientsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._nosEtNomsClientsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._p01_ClientTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._p01_ClientTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._p01_ChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._p01_ChambreTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._p01_TypeChambreTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._p01_TypeChambreTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._soinDateAssistantTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.soinDateAssistant.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18397,35 +19289,11 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._p01_ChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.P01_Chambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._assistantsListTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._p01_ChambreTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._p01_ClientTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.P01_Client.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._p01_ClientTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._p01_TypeUtilisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.P01_TypeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._p01_TypeUtilisateurTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._nosEtNomsClientsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.nosEtNomsClients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._nosEtNomsClientsTableAdapter.Update(deletedRows));
+                    result = (result + this._assistantsListTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -18437,27 +19305,11 @@ SELECT NoSoin, Description FROM P01_Soin WHERE (NoSoin = @NoSoin)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._p01_TypeChambreTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.P01_TypeChambre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._p01_TypeChambreTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._p01_TypeSoinTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.P01_TypeSoin.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._p01_TypeSoinTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._assistantsListTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.assistantsList.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._assistantsListTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

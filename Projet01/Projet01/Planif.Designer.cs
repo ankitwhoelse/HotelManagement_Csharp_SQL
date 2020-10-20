@@ -107,6 +107,7 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.assistantsListTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
@@ -121,6 +122,7 @@
             this.tableAdapterManager.P01_TypeSoinTableAdapter = null;
             this.tableAdapterManager.P01_TypeUtilisateurTableAdapter = null;
             this.tableAdapterManager.P01_UtilisateurTableAdapter = null;
+            this.tableAdapterManager.soinDateAssistantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // p01_AssistantTableAdapter
@@ -276,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 366);
+            this.ClientSize = new System.Drawing.Size(413, 355);
             this.Controls.Add(this.TimePicker);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.datePicker);
@@ -289,9 +291,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Planif";
             this.Text = "Ajout d\'une planification de soin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Planif_FormClosing);
             this.Load += new System.EventHandler(this.Planif_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_SoinBindingSource)).EndInit();

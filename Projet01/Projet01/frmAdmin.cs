@@ -22,8 +22,8 @@ namespace Projet01
         public dynamic NoChambre;
         public dynamic NoTypeChambre;
         
-        private int choixMenu;
-        private int noRapport;
+        private int choixMenu = -1;
+        private int NoRapport;
         private bool booAjout;
 
         frmUtilisateur frmU = new frmUtilisateur();
@@ -871,6 +871,6 @@ namespace Projet01
             frmRap.ShowDialog();
             this.Show();
         }
-        
+
     }
 }

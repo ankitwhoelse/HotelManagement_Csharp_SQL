@@ -116,7 +116,9 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.assistantsListTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.nosEtNomsClientsTableAdapter = null;
             this.tableAdapterManager.P01_AssistantSoinTableAdapter = null;
             this.tableAdapterManager.P01_AssistantTableAdapter = null;
             this.tableAdapterManager.P01_ChambreTableAdapter = null;
@@ -129,6 +131,7 @@
             this.tableAdapterManager.P01_TypeSoinTableAdapter = null;
             this.tableAdapterManager.P01_TypeUtilisateurTableAdapter = null;
             this.tableAdapterManager.P01_UtilisateurTableAdapter = null;
+            this.tableAdapterManager.soinDateAssistantTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projet01.BDB56AnkitDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lblTitre
@@ -221,8 +224,12 @@
             this.Controls.Add(prixHautLabel);
             this.Controls.Add(prixBasLabel);
             this.Controls.Add(prixMoyenLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTypeChambre";
             this.Text = "frmTypeChambre";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTypeChambre_FormClosing);
             this.Load += new System.EventHandler(this.frmTypeChambre_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p01_TypeChambreBindingSource)).EndInit();

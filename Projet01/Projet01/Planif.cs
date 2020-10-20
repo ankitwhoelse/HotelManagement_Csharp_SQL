@@ -38,6 +38,7 @@ namespace Projet01
             // TODO: cette ligne de code charge les données dans la table 'bDB56AnkitDataSet.P01_Soin'. Vous pouvez la déplacer ou la supprimer selon les besoins.
             this.p01_SoinTableAdapter.Fill(this.bDB56AnkitDataSet.P01_Soin);
             this.nom_Numero_InvitesTableAdapter.Fill(this.bDB56AnkitDataSet.Nom_Numero_Invites);
+
             rbClient.Checked = true;
             tbSoin.Text = NomSoin;
             TimePicker.Format = DateTimePickerFormat.Time; 
@@ -49,7 +50,7 @@ namespace Projet01
 
         private void btn_Annuler_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void btn_ajouter_Click(object sender, EventArgs e)
@@ -142,5 +143,21 @@ namespace Projet01
             CbPersonnes.DisplayMember = "Nom_Numero_Invites";
         }
 
+        private void Planif_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Controls.OfType<TextBox>().Any(tBox => string.IsNullOrEmpty(tBox.Text)))
+            {
+                DialogResult resulat = MessageBox.Show("Etes vous certain d'annuler l'ajout?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resulat == DialogResult.Yes)
+                {
+
+                }
+                else if (resulat == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

@@ -132,17 +132,7 @@ namespace Projet01
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            if (this.Controls.OfType<TextBox>().Any(tBox => string.IsNullOrEmpty(tBox.Text)))
-            {
-                DialogResult resulat = MessageBox.Show("Etes vous certain d'annuler " + (booAjout ? "l'ajout?" : "la modification?"), "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                if (resulat == DialogResult.Yes)
-                    this.Close();
-                else if (resulat == DialogResult.No)
-                {
-                    return;
-                }
-            }
+            this.Close();
         }
 
 
@@ -156,6 +146,23 @@ namespace Projet01
                 e.Handled = true;
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
                 e.Handled = true;
+        }
+
+        private void frmTypeChambre_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Controls.OfType<TextBox>().Any(tBox => string.IsNullOrEmpty(tBox.Text)))
+            {
+                DialogResult resulat = MessageBox.Show("Etes vous certain d'annuler " + (booAjout ? "l'ajout?" : "la modification?"), "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resulat == DialogResult.Yes)
+                {
+
+                }
+                else if (resulat == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

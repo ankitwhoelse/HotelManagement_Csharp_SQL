@@ -127,5 +127,22 @@ namespace Projet01
         {
             this.Close();
         }
+
+        private void frmAssistant_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Controls.OfType<TextBox>().Any(tBox => string.IsNullOrEmpty(tBox.Text)))
+            {
+                DialogResult resulat = MessageBox.Show("Etes vous certain d'annuler " + (booAjout ? "l'ajout?" : "la modification?"), "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (resulat == DialogResult.Yes)
+                {
+                    
+                }
+                else if (resulat == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

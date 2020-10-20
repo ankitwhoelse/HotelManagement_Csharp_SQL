@@ -48,27 +48,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbRapport1 = new System.Windows.Forms.GroupBox();
             this.gbRapport3 = new System.Windows.Forms.GroupBox();
-            this.assistantsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.assistantsListTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.assistantsListTableAdapter();
-            this.assistantsListComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateSoinAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dateSoinAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.dateSoinAssistantTableAdapter();
-            this.dateSoinAssistantComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.soinDateAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.soinDateAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.soinDateAssistantTableAdapter();
-            this.soinDateAssistantComboBox = new System.Windows.Forms.ComboBox();
-            this.rapportSoinsAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rapportSoinsAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.rapportSoinsAssistantTableAdapter();
             this.rapportSoinsAssistantDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rapportSoinsAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.soinDateAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dateSoinAssistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.assistantsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.soinDateAssistantComboBox = new System.Windows.Forms.ComboBox();
+            this.dateSoinAssistantComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.assistantsListComboBox = new System.Windows.Forms.ComboBox();
+            this.assistantsListTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.assistantsListTableAdapter();
+            this.dateSoinAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.dateSoinAssistantTableAdapter();
+            this.soinDateAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.soinDateAssistantTableAdapter();
+            this.rapportSoinsAssistantTableAdapter = new Projet01.BDB56AnkitDataSetTableAdapters.rapportSoinsAssistantTableAdapter();
             totalSoldeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56AnkitDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personnesPlanifBindingSource)).BeginInit();
@@ -76,11 +74,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgInfoSoinPersonne)).BeginInit();
             this.gbRapport1.SuspendLayout();
             this.gbRapport3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.assistantsListBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateSoinAssistantBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.soinDateAssistantBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soinDateAssistantBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSoinAssistantBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assistantsListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // totalSoldeLabel
@@ -265,103 +263,11 @@
             this.gbRapport3.TabStop = false;
             this.gbRapport3.Text = "Selectionnez un assistant";
             // 
-            // assistantsListBindingSource
-            // 
-            this.assistantsListBindingSource.DataMember = "assistantsList";
-            this.assistantsListBindingSource.DataSource = this.bDB56AnkitDataSet;
-            // 
-            // assistantsListTableAdapter
-            // 
-            this.assistantsListTableAdapter.ClearBeforeFill = true;
-            // 
-            // assistantsListComboBox
-            // 
-            this.assistantsListComboBox.DataSource = this.assistantsListBindingSource;
-            this.assistantsListComboBox.DisplayMember = "Assistant";
-            this.assistantsListComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.assistantsListComboBox.FormattingEnabled = true;
-            this.assistantsListComboBox.Location = new System.Drawing.Point(6, 19);
-            this.assistantsListComboBox.Name = "assistantsListComboBox";
-            this.assistantsListComboBox.Size = new System.Drawing.Size(169, 21);
-            this.assistantsListComboBox.TabIndex = 0;
-            this.assistantsListComboBox.ValueMember = "NoAssistant";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Selectionnez une date";
-            // 
-            // dateSoinAssistantBindingSource
-            // 
-            this.dateSoinAssistantBindingSource.DataMember = "fk_NoAssistantPlanif4";
-            this.dateSoinAssistantBindingSource.DataSource = this.assistantsListBindingSource;
-            // 
-            // dateSoinAssistantTableAdapter
-            // 
-            this.dateSoinAssistantTableAdapter.ClearBeforeFill = true;
-            // 
-            // dateSoinAssistantComboBox
-            // 
-            this.dateSoinAssistantComboBox.DataSource = this.dateSoinAssistantBindingSource;
-            this.dateSoinAssistantComboBox.DisplayMember = "Date";
-            this.dateSoinAssistantComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dateSoinAssistantComboBox.FormattingEnabled = true;
-            this.dateSoinAssistantComboBox.Location = new System.Drawing.Point(6, 63);
-            this.dateSoinAssistantComboBox.Name = "dateSoinAssistantComboBox";
-            this.dateSoinAssistantComboBox.Size = new System.Drawing.Size(169, 21);
-            this.dateSoinAssistantComboBox.TabIndex = 2;
-            this.dateSoinAssistantComboBox.ValueMember = "Date";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Selectionnez un soin";
-            // 
-            // soinDateAssistantBindingSource
-            // 
-            this.soinDateAssistantBindingSource.DataMember = "fk_NoSoinPlanif4";
-            this.soinDateAssistantBindingSource.DataSource = this.dateSoinAssistantBindingSource;
-            // 
-            // soinDateAssistantTableAdapter
-            // 
-            this.soinDateAssistantTableAdapter.ClearBeforeFill = true;
-            // 
-            // soinDateAssistantComboBox
-            // 
-            this.soinDateAssistantComboBox.DataSource = this.soinDateAssistantBindingSource;
-            this.soinDateAssistantComboBox.DisplayMember = "Description";
-            this.soinDateAssistantComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.soinDateAssistantComboBox.FormattingEnabled = true;
-            this.soinDateAssistantComboBox.Location = new System.Drawing.Point(6, 113);
-            this.soinDateAssistantComboBox.Name = "soinDateAssistantComboBox";
-            this.soinDateAssistantComboBox.Size = new System.Drawing.Size(169, 21);
-            this.soinDateAssistantComboBox.TabIndex = 4;
-            this.soinDateAssistantComboBox.ValueMember = "NoSoin";
-            // 
-            // rapportSoinsAssistantBindingSource
-            // 
-            this.rapportSoinsAssistantBindingSource.DataMember = "soinDateAssistant_rapportSoinsAssistant";
-            this.rapportSoinsAssistantBindingSource.DataSource = this.soinDateAssistantBindingSource;
-            // 
-            // rapportSoinsAssistantTableAdapter
-            // 
-            this.rapportSoinsAssistantTableAdapter.ClearBeforeFill = true;
-            // 
             // rapportSoinsAssistantDataGridView
             // 
             this.rapportSoinsAssistantDataGridView.AutoGenerateColumns = false;
             this.rapportSoinsAssistantDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportSoinsAssistantDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
@@ -372,22 +278,6 @@
             this.rapportSoinsAssistantDataGridView.Name = "rapportSoinsAssistantDataGridView";
             this.rapportSoinsAssistantDataGridView.Size = new System.Drawing.Size(344, 220);
             this.rapportSoinsAssistantDataGridView.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Assistant";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Assistant";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NoAssistant";
-            this.dataGridViewTextBoxColumn2.HeaderText = "NoAssistant";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -426,11 +316,101 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
+            // rapportSoinsAssistantBindingSource
+            // 
+            this.rapportSoinsAssistantBindingSource.DataMember = "soinDateAssistant_rapportSoinsAssistant";
+            this.rapportSoinsAssistantBindingSource.DataSource = this.soinDateAssistantBindingSource;
+            // 
+            // soinDateAssistantBindingSource
+            // 
+            this.soinDateAssistantBindingSource.DataMember = "fk_NoSoinPlanif4";
+            this.soinDateAssistantBindingSource.DataSource = this.dateSoinAssistantBindingSource;
+            // 
+            // dateSoinAssistantBindingSource
+            // 
+            this.dateSoinAssistantBindingSource.DataMember = "fk_NoAssistantPlanif4";
+            this.dateSoinAssistantBindingSource.DataSource = this.assistantsListBindingSource;
+            // 
+            // assistantsListBindingSource
+            // 
+            this.assistantsListBindingSource.DataMember = "assistantsList";
+            this.assistantsListBindingSource.DataSource = this.bDB56AnkitDataSet;
+            // 
+            // soinDateAssistantComboBox
+            // 
+            this.soinDateAssistantComboBox.DataSource = this.soinDateAssistantBindingSource;
+            this.soinDateAssistantComboBox.DisplayMember = "Description";
+            this.soinDateAssistantComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.soinDateAssistantComboBox.FormattingEnabled = true;
+            this.soinDateAssistantComboBox.Location = new System.Drawing.Point(6, 113);
+            this.soinDateAssistantComboBox.Name = "soinDateAssistantComboBox";
+            this.soinDateAssistantComboBox.Size = new System.Drawing.Size(169, 21);
+            this.soinDateAssistantComboBox.TabIndex = 4;
+            this.soinDateAssistantComboBox.ValueMember = "NoSoin";
+            // 
+            // dateSoinAssistantComboBox
+            // 
+            this.dateSoinAssistantComboBox.DataSource = this.dateSoinAssistantBindingSource;
+            this.dateSoinAssistantComboBox.DisplayMember = "Date";
+            this.dateSoinAssistantComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateSoinAssistantComboBox.FormattingEnabled = true;
+            this.dateSoinAssistantComboBox.Location = new System.Drawing.Point(6, 63);
+            this.dateSoinAssistantComboBox.Name = "dateSoinAssistantComboBox";
+            this.dateSoinAssistantComboBox.Size = new System.Drawing.Size(169, 21);
+            this.dateSoinAssistantComboBox.TabIndex = 2;
+            this.dateSoinAssistantComboBox.ValueMember = "Date";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Selectionnez un soin";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Selectionnez une date";
+            // 
+            // assistantsListComboBox
+            // 
+            this.assistantsListComboBox.DataSource = this.assistantsListBindingSource;
+            this.assistantsListComboBox.DisplayMember = "Assistant";
+            this.assistantsListComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.assistantsListComboBox.FormattingEnabled = true;
+            this.assistantsListComboBox.Location = new System.Drawing.Point(6, 19);
+            this.assistantsListComboBox.Name = "assistantsListComboBox";
+            this.assistantsListComboBox.Size = new System.Drawing.Size(169, 21);
+            this.assistantsListComboBox.TabIndex = 0;
+            this.assistantsListComboBox.ValueMember = "NoAssistant";
+            // 
+            // assistantsListTableAdapter
+            // 
+            this.assistantsListTableAdapter.ClearBeforeFill = true;
+            // 
+            // dateSoinAssistantTableAdapter
+            // 
+            this.dateSoinAssistantTableAdapter.ClearBeforeFill = true;
+            // 
+            // soinDateAssistantTableAdapter
+            // 
+            this.soinDateAssistantTableAdapter.ClearBeforeFill = true;
+            // 
+            // rapportSoinsAssistantTableAdapter
+            // 
+            this.rapportSoinsAssistantTableAdapter.ClearBeforeFill = true;
+            // 
             // frmRapport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 436);
+            this.ClientSize = new System.Drawing.Size(1077, 373);
             this.Controls.Add(this.gbRapport3);
             this.Controls.Add(this.gbRapport1);
             this.Controls.Add(this.lblTitre);
@@ -445,11 +425,11 @@
             this.gbRapport1.PerformLayout();
             this.gbRapport3.ResumeLayout(false);
             this.gbRapport3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.assistantsListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateSoinAssistantBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.soinDateAssistantBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rapportSoinsAssistantBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soinDateAssistantBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSoinAssistantBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assistantsListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
