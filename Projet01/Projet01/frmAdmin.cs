@@ -872,5 +872,9 @@ namespace Projet01
             this.Show();
         }
 
+        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(1);
+        }
     }
 }

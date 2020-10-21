@@ -24,8 +24,16 @@ namespace Projet01
         {
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.rapportSoinsAssistant' table. You can move, or remove it, as needed.
             this.rapportSoinsAssistantTableAdapter.Fill(this.bDB56AnkitDataSet.rapportSoinsAssistant);
-            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.soinDateAssistant' table. You can move, or remove it, as needed.
-            this.soinDateAssistantTableAdapter.Fill(this.bDB56AnkitDataSet.soinDateAssistant);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.dateSoinAssistant' table. You can move, or remove it, as needed.
+            this.dateSoinAssistantTableAdapter.Fill(this.bDB56AnkitDataSet.dateSoinAssistant);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_ReservationChambreR2' table. You can move, or remove it, as needed.
+            this.p01_ReservationChambreR2TableAdapter.Fill(this.bDB56AnkitDataSet.P01_ReservationChambreR2);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.P01_ReservationChambre' table. You can move, or remove it, as needed.
+            this.p01_ReservationChambreTableAdapter.Fill(this.bDB56AnkitDataSet.P01_ReservationChambre);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.noEtEmplacementChambre' table. You can move, or remove it, as needed.
+            this.noEtEmplacementChambreTableAdapter.Fill(this.bDB56AnkitDataSet.noEtEmplacementChambre);
+            // TODO: This line of code loads data into the 'bDB56AnkitDataSet.rapportSoinsAssistant' table. You can move, or remove it, as needed.
+            this.rapportSoinsAssistantTableAdapter.Fill(this.bDB56AnkitDataSet.rapportSoinsAssistant);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.dateSoinAssistant' table. You can move, or remove it, as needed.
             this.dateSoinAssistantTableAdapter.Fill(this.bDB56AnkitDataSet.dateSoinAssistant);
             // TODO: This line of code loads data into the 'bDB56AnkitDataSet.assistantsList' table. You can move, or remove it, as needed.
@@ -39,6 +47,8 @@ namespace Projet01
             {
                 case 1: // soins offert a une personne
                     gbRapport1.Visible = true;
+                    gbRapport2.Visible = false;
+                    gbRapport3.Visible = false;
 
                     lblTitre.Text = "Rapport 1: Rapport des soins offerts\naux clients et aux invités";
                     this.Text = "Rapport 01";
@@ -46,15 +56,19 @@ namespace Projet01
 
                 case 2: // reservation chambre
                     gbRapport1.Visible = false;
+                    gbRapport2.Visible = true;
+                    gbRapport3.Visible = false;
 
-                    lblTitre.Text = "Rapport B: Rapport des réservations de chambres";
+                    lblTitre.Text = "Rapport 2: Rapport des réservations de chambres";
                     this.Text = "Rapport 02";
                     break;
 
                 case 3: // rapport soins journaliers des assistants
                     gbRapport1.Visible = false;
+                    gbRapport2.Visible = false;
+                    gbRapport3.Visible = true;
 
-                    lblTitre.Text = "Rapport III: Rapport des soins journaliers\ndes assistants";
+                    lblTitre.Text = "Rapport 3: Rapport des soins journaliers\ndes assistants";
                     this.Text = "Rapport 03";
                     break;
 
@@ -77,6 +91,27 @@ namespace Projet01
             }
 
             totalSoldeTextBox.Text = format;
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmAdmin frmA = new frmAdmin();
+            frmA.Show();
+        }
+
+        private void btnCycler_Click(object sender, EventArgs e)
+        {
+            NoRapport++;
+            if (NoRapport == 4)
+                NoRapport = 1;
+
+            frmRapport_Load(this, e);
+        }
+
+        private void soinDateAssistantComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,29 +37,56 @@ SELECT * FROM P01_Utilisateur
 --SELECT DISTINCT(NoPersonne), CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'NomComplet'
 --FROM P01_PlanifSoin Ps LEFT JOIN P01_Invite I ON Ps.NoPersonne=I.NoInvite WHERE NoInvite is not null
 
-		-- Rapport03
-SELECT CAST(Ps.NoAssistant as varchar) +': '+ A.Prenom + ' ' + A.Nom as 'Assistant', A.NoAssistant,
-CAST(NoClient as varchar) +': '+ C.Prenom +' '+ c.Nom as 'Personne', C.NoClient as 'NoPersonne',
-Description as 'Soin', Ps.NoSoin, Ps.DateHeure
-FROM P01_Client C LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoClient
-LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
-LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
-UNION
-SELECT CAST(Ps.NoAssistant as varchar) +': '+ A.Prenom + ' ' + A.Nom as 'Assistant', A.NoAssistant,
-CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'Personne', I.NoInvite as 'NoPersonne',
-Description as 'Soin', Ps.NoSoin, Ps.DateHeure
-FROM P01_INVITE I LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoInvite
-LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
-LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
+--		-- Rapport03
+--SELECT CAST(Ps.NoAssistant as varchar) +': '+ A.Prenom + ' ' + A.Nom as 'Assistant', A.NoAssistant,
+--CAST(NoClient as varchar) +': '+ C.Prenom +' '+ c.Nom as 'Personne', C.NoClient as 'NoPersonne',
+--Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+--FROM P01_Client C LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoClient
+--LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
+--LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
+--UNION
+--SELECT CAST(Ps.NoAssistant as varchar) +': '+ A.Prenom + ' ' + A.Nom as 'Assistant', A.NoAssistant,
+--CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'Personne', I.NoInvite as 'NoPersonne',
+--Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+--FROM P01_INVITE I LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoInvite
+--LEFT JOIN P01_Assistant A on A.NoAssistant=Ps.NoAssistant
+--LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
 
 SELECT CAST(NoAssistant as varchar) +': '+ Prenom + ' ' + Nom as 'Assistant', NoAssistant
 FROM P01_Assistant
 
-SELECT CONVERT(Date, DateHeure) as 'Date' FROM P01_PlanifSoin
+SELECT CONVERT(Date, DateHeure) as 'Date', NoAssistant
+FROM P01_PlanifSoin
 
-SELECT NoSoin, Description FROM P01_Soin
+SELECT DISTINCT S.NoSoin, CONVERT(Date, DateHeure) as 'Date', NoAssistant, Description as 'NomSoin'
+FROM P01_Soin S 
+left join P01_PlanifSoin Ps on S.NoSoin = Ps.NoSoin
+WHERE NoAssistant is not null
+
+SELECT CAST(NoClient as varchar) +': '+ C.Prenom +' '+ c.Nom as 'Personne', C.NoClient as 'NoPersonne',
+Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+FROM P01_Client C LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoClient
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
+UNION
+SELECT CAST(NoInvite as varchar) +': '+ i.NomPrenom as 'Personne', I.NoInvite as 'NoPersonne',
+Description as 'Soin', Ps.NoSoin, Ps.DateHeure
+FROM P01_INVITE I LEFT JOIN P01_PlanifSoin Ps on NoPersonne=NoInvite
+LEFT JOIN P01_Soin S on S.NoSoin=Ps.NoSoin WHERE Ps.NoSoin is not null
 
 
-SELECT Rs.NoClient, CAST(Rs.NoClient as varchar) +': '+ Prenom +' '+ Nom +', Chambre: ' + CAST(NoChambre as varchar) as 'NomComplet'
-FROM P01_ReservationChambre Rs 
+
+
+--SELECT Rs.NoClient, CAST(Rs.NoClient as varchar) +': '+ Prenom +' '+ Nom +', Chambre: ' + CAST(NoChambre as varchar) as 'NomComplet'
+--FROM P01_ReservationChambre Rs 
+--LEFT JOIN P01_Client C on C.NoClient = Rs.NoClient
+
+-- Rapport 03
+
+SELECT DISTINCT Rs.NoClient, Rs.NoChambre ,
+'Chambre ' + CAST(Rs.NoChambre AS varchar) + ', ' + C.Emplacement AS 'noEtEmplacementChambre'
+FROM P01_ReservationChambre AS Rs 
+LEFT OUTER JOIN P01_Chambre AS C ON C.NoChambre = Rs.NoChambre
+
+SELECT Rs.NoClient, NoChambre, DateArrivee, DateDepart, NbPersonnes, Prenom +' '+Nom as 'NomComplet'
+FROM P01_ReservationChambre Rs
 LEFT JOIN P01_Client C on C.NoClient = Rs.NoClient

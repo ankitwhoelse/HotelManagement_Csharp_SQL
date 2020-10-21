@@ -85,6 +85,7 @@ namespace Projet01
             maCommande = new SqlCommand(maRequeteSQL, maConnexion);
             SqlDataReader Dates = maCommande.ExecuteReader();
             bool booExiste = false;
+
             if (Dates.HasRows)
             {
                 while (Dates.Read())
@@ -94,28 +95,20 @@ namespace Projet01
 
                 }
                 Dates.Close();
-                maConnexion.Close();
             }
+            maConnexion.Close();
+
+
             if (tempsPlanif < DateTime.Now)
-            {
                 MessageBox.Show("Date non valide", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           else if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
+            else if ((tempsPlanif.Hour > 17 || tempsPlanif.Hour < 8) || (tempsPlanif.Hour == 17 && (tempsPlanif.Minute > 0 || tempsPlanif.Second > 0)))
                 MessageBox.Show("Veuillez sélectionner une heure de réservation entre 8h et 17h ", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (tempsPlanif.DayOfWeek.ToString() == "Saturday" || tempsPlanif.DayOfWeek.ToString() == "Sunday")
-            {
                 MessageBox.Show("Il n'est pas possible de planifier un soin durant la fin de semaine", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else if (booExiste == true)
-            {
                 MessageBox.Show(strAssistant + " n'est pas disponible dans cette plage horaire", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-             
             else
             {
-
-                //MessageBox.Show("Voici le numero d'assistant  " + resultat, "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 maConnexion.Open();
                 maRequeteSQL = "insert into P01_PlanifSoin(NoPersonne,NoAssistant,DateHeure,NoSoin) values(" + NoPersonne + "," + Int32.Parse(NoAssistant.ToString()) 
                     + ",'" + tempsPlanif.ToString("yyyy-MM-dd HH:mm:ss") + "'," + NoSoin + ")";

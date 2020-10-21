@@ -4,6 +4,10 @@
 
     partial class BDB56AnkitDataSet
     {
+        partial class DataTable1DataTable
+        {
+        }
+
         partial class noClient_nomClient_noChambreDataTable
         {
         }
